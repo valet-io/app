@@ -16,8 +16,10 @@
     "url": "https://github.com/valet-io/projector-app/issues"
   },
   "homepage": "https://github.com/valet-io/projector-app",
+  "dependencies": {
+    "ng-base-model": "git://github.com/valet-io/ng-base-model"
+  },
   "devDependencies": {
-    "ng-base-model": "git://github.com/valet-io/ng-base-model",
     "sinon-chai": "~2.5.0",
     "chai": "~1.9.1",
     "sinon": "~1.9.1",
@@ -29,5 +31,22 @@
     "browserify-shim": "~3.4.1",
     "karma-phantomjs-launcher": "~0.1.4",
     "karma": "~0.12.9"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "angular": "./app/bower_components/angular/angular.js",
+    "angular-mocks": "./app/bower_components/angular-mocks/angular-mocks.js"
+  },
+  "browserify-shim": {
+    "angular": "angular",
+    "angular-mocks": {
+      "depends": [
+        "angular"
+      ]
+    }
   }
 }
