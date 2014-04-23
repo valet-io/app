@@ -1,0 +1,19 @@
+{
+  "name": "projector-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Client side app for displaying live pledge results on a projector screen",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/valet-io/projector-app.git"
+  },
+  "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me/)",
+  "bugs": {
+    "url": "https://github.com/valet-io/projector-app/issues"
+  },
+  "homepage": "https://github.com/valet-io/projector-app"
+}
