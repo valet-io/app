@@ -39,14 +39,16 @@
   },
   "browser": {
     "angular": "./app/bower_components/angular/angular.js",
-    "angular-mocks": "./app/bower_components/angular-mocks/angular-mocks.js"
+    "angular-mocks": "./app/bower_components/angular-mocks/angular-mocks.js",
+    "angular-fullscreen": "./app/bower_components/angular-fullscreen/src/angular-fullscreen.js"
   },
   "browserify-shim": {
     "angular": "angular",
+    "angular-fullscreen": {
+      "depends": ["angular"]
+    },
     "angular-mocks": {
-      "depends": [
-        "angular"
-      ]
+      "depends": ["angular"]
     }
   }
 }
