@@ -4,10 +4,12 @@ module.exports = function (config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['mocha', 'chai-sinon', 'browserify'],
+    frameworks: ['browserify', 'mocha', 'chai-sinon'],
 
     // list of files / patterns to load in the browser
     files: [
+      'components/angular/angular.js',
+      'components/angular-mocks/angular-mocks.js',
       'test/unit/**/*.js'
     ],
 
@@ -16,8 +18,7 @@ module.exports = function (config) {
     },
 
     browserify: {
-        watch: true,
-        debug: true
+      debug: true
     },
 
     // list of files / patterns to exclude
