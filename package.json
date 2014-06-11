@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/valet-io/projector-app",
   "dependencies": {
+    "angular-cjs-module": "^0.1.0",
     "angular-ui-router": "^0.2.10",
     "ng-base-model": "git://github.com/valet-io/ng-base-model"
   },

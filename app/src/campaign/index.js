@@ -1,12 +1,8 @@
-'use strict';
+'use strict'; 
 
-require('angular')
-  .module('CampaignModule', [
-    require('ng-base-model')
-  ])
-  .factory('Campaign', [
+module.exports = require('angular-cjs-module')('Campaign', [require('ng-base-model')], function (module) {
+  module.factory('Campaign', [
     'BaseModel',
     require('./model')
   ]);
-
-module.exports = 'CampaignModule';
+});
