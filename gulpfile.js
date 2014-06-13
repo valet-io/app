@@ -7,6 +7,7 @@ var browserify = require('browserify');
 var connect    = require('connect');
 var nconf      = require('nconf');
 var watchify   = require('watchify');
+var sequence   = require('run-sequence');
 var internals  = {};
 
 nconf
@@ -54,31 +55,24 @@ gulp.task('vendor', function () {
   .pipe(gulp.dest(paths.build + '/scripts'));
 });
 
-internals.inject = function (glob, tag) {
-  return plugins.inject(gulp.src(glob, {read: false}), {
-    starttag: tag && '<!-- inject:' + tag + ':{{ext}} -->'
-  });
-};
-
 gulp.task('index', function () {
   return gulp.src(paths.index)
-    .pipe(internals.inject(paths.build + '/scripts/vendor*.js', 'vendor'))
-    .pipe(internals.inject(paths.build + '/scripts/app*.js', 'app'))
-    .pipe(internals.inject(paths.build + '/scripts/templates*.js', 'templates'))
     .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['index', 'vendor'], function () {
   var bundler = watchify(paths.main);
   bundler.on('update', internals.bundle.bind(null, bundler));
 
-  // gulp.watch(paths)
+  gulp.watch(paths.index, ['index']);
 
   plugins.livereload.listen();
-  gulp.watch(paths.build + '/**', plugins.livereload.changed);
+  gulp.watch(paths.build + '/**/*', plugins.livereload.changed);
+
+  return internals.bundle(bundler);
 });
 
-gulp.task('server', function () {
+gulp.task('serve', ['watch'], function () {
   connect()
     .use(connect.logger('dev'))
     .use(require('connect-modrewrite')([

@@ -29,10 +29,10 @@
     "connect-modrewrite": "~0.7.6",
     "gulp": "/Users/Ben3.8.0",
     "gulp-concat": "~2.2.0",
-    "gulp-inject": "~0.4.1",
     "gulp-jshint": "~1.6.2",
     "gulp-livereload": "~2.1.0",
     "gulp-load-plugins": "~0.5.1",
+    "gulp-rename-git": "~0.1.0",
     "gulp-util": "~2.2.17",
     "jshint-stylish": "~0.2.0",
     "karma": "~0.12.9",
@@ -47,7 +47,6 @@
     "sinon-chai": "~2.5.0",
     "vinyl-source-stream": "~0.1.1",
     "watchify": "~0.10.2",
-    "yargs": "~1.2.2"
   },
   "browserify": {
     "transform": [
