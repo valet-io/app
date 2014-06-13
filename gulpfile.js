@@ -6,6 +6,7 @@ var source     = require('vinyl-source-stream');
 var browserify = require('browserify');
 var connect    = require('connect');
 var nconf      = require('nconf');
+var watchify   = require('watchify');
 var internals  = {};
 
 nconf
@@ -18,18 +19,31 @@ nconf
     }
   });
 
+var paths = {
+  src: './app/src/**/*.js',
+  main: './app/src/index.js',
+  index: './app/index.html',
+  test: './test/**/*.js',
+  styles: './app/styles/main.sass',
+  build: './build'
+};
+
 gulp.task('lint', function () {
-  return gulp.src(['gulpfile.js', 'src/**/*.js', 'test/**/*.js'])
+  return gulp.src(['gulpfile.js', paths.src, paths.test])
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter('jshint-stylish'))
     .pipe(plugins.jshint.reporter('fail'));
 });
 
-gulp.task('bundle', function () {
-  return browserify('./app/src/app/index.js')
+internals.bundle = function (bundler) {
+  return bundler
     .bundle()
     .pipe(source('app.js'))
-    .pipe(gulp.dest('build/scripts'));
+    .pipe(gulp.dest(paths.build + '/scripts'));
+};
+
+gulp.task('bundle', function () {
+  return internals.bundle(browserify(paths.main));
 });
 
 gulp.task('vendor', function () {
@@ -37,11 +51,35 @@ gulp.task('vendor', function () {
     'components/angular/angular.js'
   ])
   .pipe(plugins.concat('vendor.js'))
-  .pipe(gulp.dest('build/scripts'));
+  .pipe(gulp.dest(paths.build + '/scripts'));
 });
 
-gulp.task('serve', function () {
-  var handler = connect()
+internals.inject = function (glob, tag) {
+  return plugins.inject(gulp.src(glob, {read: false}), {
+    starttag: tag && '<!-- inject:' + tag + ':{{ext}} -->'
+  });
+};
+
+gulp.task('index', function () {
+  return gulp.src(paths.index)
+    .pipe(internals.inject(paths.build + '/scripts/vendor*.js', 'vendor'))
+    .pipe(internals.inject(paths.build + '/scripts/app*.js', 'app'))
+    .pipe(internals.inject(paths.build + '/scripts/templates*.js', 'templates'))
+    .pipe(gulp.dest(paths.build));
+});
+
+gulp.task('watch', function () {
+  var bundler = watchify(paths.main);
+  bundler.on('update', internals.bundle.bind(null, bundler));
+
+  // gulp.watch(paths)
+
+  plugins.livereload.listen();
+  gulp.watch(paths.build + '/**', plugins.livereload.changed);
+});
+
+gulp.task('server', function () {
+  connect()
     .use(connect.logger('dev'))
     .use(require('connect-modrewrite')([
       '!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]'
