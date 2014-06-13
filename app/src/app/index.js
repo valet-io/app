@@ -1,6 +1,9 @@
 'use strict'; 
 
 require('angular')
-  .module('ProjectorApp', []);
+  .module('ProjectorApp', [])
+  .controller('AppController', [
+    require('./controller')
+  ]);
 
 module.exports = 'ProjectorApp';
