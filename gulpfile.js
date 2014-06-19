@@ -21,11 +21,11 @@ nconf
   });
 
 var paths = {
-  src: './app/src/**/*.js',
-  main: './app/src/index.js',
-  index: './app/index.html',
+  src: './src/**/*.js',
+  main: './src/index.js',
+  index: './index.html',
   test: './test/**/*.js',
-  styles: './app/styles/main.sass',
+  styles: './styles/main.sass',
   build: './build'
 };
 
@@ -49,7 +49,10 @@ gulp.task('bundle', function () {
 
 gulp.task('vendor', function () {
   return gulp.src([
-    'components/angular/angular.js'
+    './components/angular/angular.js',
+    './node_modules/angular-ui-router/release/angular-ui-router.js',
+    './components/firebase/firebase.js',
+    './components/angularfire/angularfire.js'
   ])
   .pipe(plugins.concat('vendor.js'))
   .pipe(gulp.dest(paths.build + '/scripts'));
@@ -60,7 +63,7 @@ gulp.task('index', function () {
     .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('watch', ['index', 'vendor'], function () {
+gulp.task('watch', ['index', 'vendor'], function (done) {
   var bundler = watchify(paths.main);
   bundler.on('update', internals.bundle.bind(null, bundler));
 
@@ -72,7 +75,7 @@ gulp.task('watch', ['index', 'vendor'], function () {
   return internals.bundle(bundler);
 });
 
-gulp.task('serve', function () {
+gulp.task('serve', ['watch'], function () {
   connect()
     .use(connect.logger('dev'))
     .use(require('connect-modrewrite')([

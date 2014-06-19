@@ -14,10 +14,10 @@ module.exports = function ($stateProvider) {
             return new Campaign({id: $stateParams.id})
               .fetch()
               .then(function (campaign) {
-                
-              })
+                return campaign.listen();
+              });
           }
         ]
       }
-    })
+    });
 };

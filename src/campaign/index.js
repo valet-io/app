@@ -1,20 +1,20 @@
 'use strict';
 
-require('angular-ui-router');
-
 require('angular')
   .module('Campaign', [
     require('ng-base-model'),
-    'ui.router'
+    'ui.router',
+    'firebase'
   ])
   .factory('Campaign', [
     'BaseModel',
+    '$firebase',
+    '$q',
     require('./model')
   ])
   .config([
-    '$stateProvider'
+    '$stateProvider',
     require('./routes')
-  ])
-});
+  ]);
 
 module.exports = 'Campaign';

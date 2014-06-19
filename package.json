@@ -58,15 +58,6 @@
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "angular-fullscreen": {
-      "depends": [
-        "angular"
-      ]
-    },
-    "angular-mocks": {
-      "depends": [
-        "angular"
-      ]
-    }
+    "Firebase": "global:Firebase"
   }
 }
