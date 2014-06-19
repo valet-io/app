@@ -72,7 +72,7 @@ gulp.task('watch', ['index', 'vendor'], function () {
   return internals.bundle(bundler);
 });
 
-gulp.task('serve', ['watch'], function () {
+gulp.task('serve', function () {
   connect()
     .use(connect.logger('dev'))
     .use(require('connect-modrewrite')([
