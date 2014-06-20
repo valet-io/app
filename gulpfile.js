@@ -24,8 +24,9 @@ var paths = {
   src: './src/**/*.js',
   main: './src/index.js',
   index: './index.html',
+  templates: './src/**/*.html',
   test: './test/**/*.js',
-  styles: './styles/main.sass',
+  styles: './styles/main.scss',
   build: './build'
 };
 
@@ -63,11 +64,24 @@ gulp.task('index', function () {
     .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('watch', ['index', 'vendor'], function (done) {
+gulp.task('templates', function () {
+  return gulp.src(paths.templates)
+    .pipe(gulp.dest(paths.build + '/views'));
+});
+
+gulp.task('styles', function () {
+  return gulp.src(paths.styles)
+    .pipe(plugins.sass())
+    .pipe(gulp.dest(paths.build + '/styles'));
+});
+
+gulp.task('watch', ['index', 'vendor', 'templates'], function (done) {
   var bundler = watchify(paths.main);
   bundler.on('update', internals.bundle.bind(null, bundler));
 
   gulp.watch(paths.index, ['index']);
+  gulp.watch(paths.templates, ['templates']);
+  gulp.watch(paths.styles, ['styles']);
 
   plugins.livereload.listen();
   gulp.watch(paths.build + '/**/*', plugins.livereload.changed);

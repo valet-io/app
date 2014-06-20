@@ -6,6 +6,6 @@ module.exports = function ($stateProvider) {
       parent: 'campaign',
       controller: 'ProjectionController',
       url: '/projection',
-      template: 'Campaign {{campaign.id}}'
+      templateUrl: '/views/projection/campaign.html'
     });
 };

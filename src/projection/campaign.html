@@ -1,30 +1,28 @@
 <div class="campaign">
   <div class="main">
-    <header class="main-header">
-      <img ng-src="{{campaign.metadata.banner}}" />
-    </header>
     <div class="main-body">
-      <h2 class="main-amount-prefix">We Have Raised</h2>
-      <h1 class="main-amount">{{campaign.aggregates.total}}</h1>
+      <h2 class="count-header">{{campaign.firebase.aggregates.count}} Donors</h2>
+      <h3 class="main-amount-prefix">Have Raised</h3>
+      <h1 class="main-amount">${{campaign.total() | number}}</h1>
       <h2 class="main-url-prefix">Pledge Your Support At</h2>
       <h1 class="main-url">{{campaign.host}}</h1>
     </div>
   </div>
   <div class="sidebar">
     <header class="sidebar-header">
-      <h1>Thanks To</h1>
+      <img ng-src="{{campaign.metadata.logo}}" />
     </header>
     <div class="sidebar-body">
       <ul class="donor-list">
-        <li ng-repeat="pledge in pledges">
+        <li ng-repeat="pledge in campaign.firebase.pledges | limitTo:5 | orderBy:'timestamp':true">
           <h3 class="donor-name" ng-class="{anonymous: pledge.anonymous}">
             {{pledge.anonymous ? 'Anonymous' : pledge.donor.name}}
           </h3>
         </li>
       </ul>
     </div>
-    <footer class="sidebar-footer">
+    <!-- <footer class="sidebar-footer">
       <h4 ng-show="limit > pledges.length">And {{pledges.length - limit}} Other Donors</h4>
-    </footer>
+    </footer> -->
   </div>
 </div>
