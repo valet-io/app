@@ -13,6 +13,7 @@ deploy:
   api_key:
     secure: avqngaVhM1dtI/PrhoTHkIlTzl5D0iK87x9ksC1p9j0CcZiiLGHAXH38FdRtbKlMXc4eKK8t6ON5KbIU7N4/OZWq8rJ5ZxkU7kc8gKIXDSaqOAtf1SYcMpt7o+A1iFVDhzTA13SEz7uHeTlpkwxOyVatPc/9dE6+MUgUdBV1I3A=
   environment: development
+  skip_cleanup: true
   on:
     repo: valet-io/projector-app
     branch: development
