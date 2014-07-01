@@ -10,6 +10,7 @@ require('angular')
     'BaseModel',
     '$firebase',
     '$q',
+    'config',
     require('./model')
   ])
   .config([

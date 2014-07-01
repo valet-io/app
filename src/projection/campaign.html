@@ -4,7 +4,6 @@
       <h2 class="count-header">{{campaign.firebase.aggregates.count}} Donors</h2>
       <h3 class="main-amount-prefix">Have Raised</h3>
       <h1 class="main-amount">${{campaign.total() | number}}</h1>
-      <h2 class="goal" ng-show="campaign.metadata.goal">Of Our ${{campaign.metadata.goal | number}} Goal</h2>
       <h2 class="main-url-prefix">Pledge Your Support At</h2>
       <h1 class="main-url">{{campaign.host}}</h1>
     </div>
