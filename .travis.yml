@@ -1,0 +1,18 @@
+language: node_js
+node_js: '0.10'
+before_install:
+- npm install -g bower
+before_script:
+- bower install
+cache:
+  directories:
+    - node_modules
+before_deploy: sh ./scripts/ci-build.sh
+deploy:
+  provider: divshot
+  api_key:
+    secure: avqngaVhM1dtI/PrhoTHkIlTzl5D0iK87x9ksC1p9j0CcZiiLGHAXH38FdRtbKlMXc4eKK8t6ON5KbIU7N4/OZWq8rJ5ZxkU7kc8gKIXDSaqOAtf1SYcMpt7o+A1iFVDhzTA13SEz7uHeTlpkwxOyVatPc/9dE6+MUgUdBV1I3A=
+  environment: development
+  on:
+    repo: valet-io/projector-app
+    branch: development
