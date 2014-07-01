@@ -5,7 +5,7 @@
   "description": "Client side app for displaying live pledge results on a projector screen",
   "main": "index.js",
   "scripts": {
-    "test": "karma start --single-run --browsers PhantomJS"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
     "chai": "~1.9.1",
     "connect": "~2.19.6",
     "connect-modrewrite": "~0.7.6",
-    "gulp": "/Users/Ben3.8.0",
+    "envify": "~2.0.0",
+    "gulp": "~3.8.0",
     "gulp-concat": "~2.2.0",
     "gulp-jshint": "~1.6.2",
     "gulp-livereload": "~2.1.0",
@@ -46,16 +47,15 @@
     "nconf": "~0.6.9",
     "sinon": "~1.9.1",
     "sinon-chai": "~2.5.0",
+    "superstatic": "~0.12.6",
     "vinyl-source-stream": "~0.1.1",
     "watchify": "~0.10.2"
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      "browserify-shim",
+      "envify"
     ]
-  },
-  "browser": {
-    "angular-fullscreen": "./components/angular-fullscreen/src/angular-fullscreen.js"
   },
   "browserify-shim": {
     "angular": "global:angular",

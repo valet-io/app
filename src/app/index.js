@@ -1,7 +1,14 @@
-'use strict'; 
+'use strict';
 
-require('angular')
+var angular = require('angular');
+var config  = require('./config');
+
+angular.module('config', [])
+  .constant('config', config);
+
+angular
   .module('ProjectorApp', [
+    'config',
     require('ng-base-model'),
     require('../campaign'),
     require('../projection')
@@ -11,14 +18,11 @@ require('angular')
   ])
   .config([
     '$locationProvider',
-    function ($locationProvider) {
-      $locationProvider.html5Mode(true);
-    }
-  ])
-  .config([
     'BaseModelProvider',
-    function (BaseModelProvider) {
-      BaseModelProvider.baseURL = 'http://api.valet.io';
+    'config',
+    function ($locationProvider, BaseModelProvider, config) {
+      $locationProvider.html5Mode(true);
+      BaseModelProvider.baseURL = config.valet.api;
     }
   ]);
 
