@@ -1,0 +1,7 @@
+{
+  "name": "projector-valet-io",
+  "root": "./build",
+  "routes": {
+    "**": "index.html"
+  }
+}

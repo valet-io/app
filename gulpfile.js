@@ -1,24 +1,13 @@
 'use strict';
 
-var gulp       = require('gulp');
-var plugins    = require('gulp-load-plugins')();
-var source     = require('vinyl-source-stream');
-var browserify = require('browserify');
-var connect    = require('connect');
-var nconf      = require('nconf');
-var watchify   = require('watchify');
-var sequence   = require('run-sequence');
-var internals  = {};
-
-nconf
-  .env('_')
-  .argv()
-  .defaults({
-    server: {
-      hostname: '0.0.0.0',
-      port: 8080
-    }
-  });
+var gulp        = require('gulp');
+var plugins     = require('gulp-load-plugins')();
+var source      = require('vinyl-source-stream');
+var browserify  = require('browserify');
+var superstatic = require('superstatic');
+var watchify    = require('watchify');
+var sequence    = require('run-sequence');
+var internals   = {};
 
 var paths = {
   src: './src/**/*.js',
@@ -30,6 +19,13 @@ var paths = {
   build: './build'
 };
 
+var env = function () {
+  var environments = Array.prototype.slice.call(arguments, 0);
+  return !!environments.filter(function (e) {
+    return plugins.util.env[e];
+  });
+};
+
 gulp.task('lint', function () {
   return gulp.src(['gulpfile.js', paths.src, paths.test])
     .pipe(plugins.jshint())
@@ -39,6 +35,8 @@ gulp.task('lint', function () {
 
 internals.bundle = function (bundler) {
   return bundler
+    .transform('envify')
+    .transform('browserify-shim')
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest(paths.build + '/scripts'));
@@ -75,7 +73,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(paths.build + '/styles'));
 });
 
-gulp.task('watch', ['index', 'vendor', 'templates'], function (done) {
+gulp.task('watch', ['index', 'vendor', 'templates'], function () {
   var bundler = watchify(paths.main);
   bundler.on('update', internals.bundle.bind(null, bundler));
 
@@ -89,14 +87,6 @@ gulp.task('watch', ['index', 'vendor', 'templates'], function (done) {
   return internals.bundle(bundler);
 });
 
-gulp.task('serve', ['watch'], function () {
-  connect()
-    .use(connect.logger('dev'))
-    .use(require('connect-modrewrite')([
-      '!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]'
-    ]))
-    .use(connect.static('build'))
-    .listen(nconf.get('server:port'), function () {
-      plugins.util.log('Listening at http://' + nconf.get('server:hostname') + ':' + nconf.get('server:port'));
-    });
+gulp.task('serve', ['watch'], function (done) {
+  superstatic().listen(8000, done);
 });
