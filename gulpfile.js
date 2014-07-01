@@ -73,7 +73,7 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(paths.build + '/styles'));
 });
 
-gulp.task('watch', ['index', 'vendor', 'templates'], function () {
+gulp.task('watch', ['index', 'vendor', 'styles', 'templates'], function () {
   var bundler = watchify(paths.main);
   bundler.on('update', internals.bundle.bind(null, bundler));
 
@@ -90,3 +90,5 @@ gulp.task('watch', ['index', 'vendor', 'templates'], function () {
 gulp.task('serve', ['watch'], function (done) {
   superstatic().listen(8000, done);
 });
+
+gulp.task('build', ['bundle', 'vendor', 'styles', 'templates', 'index'])
