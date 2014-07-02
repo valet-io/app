@@ -19,18 +19,12 @@ var paths = {
   build: './build'
 };
 
-var isEnv = function () {
-  return Array.prototype.slice.call(arguments, 0)
-    .filter(function (e) {
-      return plugins.util.env[e];
-    })
-    .length;
-};
-
 var env = Object.keys(plugins.util.env)
   .filter(function (flag) {
     return ['development', 'staging', 'production'].indexOf(flag) !== -1;
   })[0];
+
+console.log('running in ' + env + 'mode');
 
 gulp.task('lint', function () {
   return gulp.src(['gulpfile.js', paths.src, paths.test])
@@ -99,4 +93,4 @@ gulp.task('serve', ['watch'], function (done) {
   superstatic().listen(8000, done);
 });
 
-gulp.task('build', ['bundle', 'vendor', 'styles', 'templates', 'index'])
+gulp.task('build', ['bundle', 'vendor', 'styles', 'templates', 'index']);
