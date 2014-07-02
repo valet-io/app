@@ -19,12 +19,19 @@ var paths = {
   build: './build'
 };
 
-var env = function () {
+var isEnv = function () {
   var environments = Array.prototype.slice.call(arguments, 0);
-  return !!environments.filter(function (e) {
-    return plugins.util.env[e];
-  });
+  return !!environments
+    .filter(function (e) {
+      return plugins.util.env[e];
+    })
+    .length;
 };
+
+var env = Object.keys(plugins.util.env)
+  .filter(function (flag) {
+    return ['development', 'staging', 'production'].indexOf(flag) !== -1;
+  })[0];
 
 gulp.task('lint', function () {
   return gulp.src(['gulpfile.js', paths.src, paths.test])
@@ -35,7 +42,9 @@ gulp.task('lint', function () {
 
 internals.bundle = function (bundler) {
   return bundler
-    .transform('envify')
+    .transform(require('envify/custom')({
+      NODE_ENV: env
+    }))
     .transform('browserify-shim')
     .bundle()
     .pipe(source('app.js'))
