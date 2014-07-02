@@ -20,8 +20,7 @@ var paths = {
 };
 
 var isEnv = function () {
-  var environments = Array.prototype.slice.call(arguments, 0);
-  return !!environments
+  return Array.prototype.slice.call(arguments, 0)
     .filter(function (e) {
       return plugins.util.env[e];
     })
