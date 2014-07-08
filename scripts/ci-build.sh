@@ -1,7 +1,10 @@
-if [ "$TRAVIS_TAG" ]; then
-  ./node_modules/.bin/gulp build --production
-elif [ "$TRAVIS_BRANCH" == "master" ]; then
-  ./node_modules/.bin/gulp build --staging
+#!/bin/bash
+set -e
+if [ "${TRAVIS_TAG}" ]; then
+  BUILD_ENV="production"
+elif [ "${TRAVIS_BRANCH}" == "master" ]; then
+  BUILD_ENV="staging"
 else
-  ./node_modules/.bin/gulp build --development
+  BUILD_ENV="development"
 fi
+gulp build --"${BUILD_ENV}"

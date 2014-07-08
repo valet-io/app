@@ -24,7 +24,7 @@ var env = Object.keys(plugins.util.env)
     return ['development', 'staging', 'production'].indexOf(flag) !== -1;
   })[0];
 
-console.log('running in ' + env + 'mode');
+console.log('running in ' + env + ' mode');
 
 gulp.task('lint', function () {
   return gulp.src(['gulpfile.js', paths.src, paths.test])
