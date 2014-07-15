@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body>
+    <div class="loading-indicator" ng-hide="loaded">
+      <div class="loading-indicator-content">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+    </div>
     <div ui-view class="full-height"></div>
     <script src="/scripts/vendor.js"></script>
     <script src="/scripts/app.js"></script>
