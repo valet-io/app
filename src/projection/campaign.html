@@ -1,8 +1,23 @@
 <div class="projection">
   <div class="main container">
     <div class="main-body">
-      <h1 class="count-header">{{campaign.firebase.aggregates.count}} Donors</h2>
-      <h3 class="main-amount-prefix">Have Raised</h3>
+      <h1 
+        class="count-header"
+        ng-pluralize
+        count="campaign.firebase.aggregates.count"
+        when="{'0': 'We',
+               '1': '1 Donor',
+               'other': '{} Donors'}">
+      </h1>
+      <h3 class="main-amount-prefix">
+        <span
+          ng-pluralize
+          count="campaign.firebase.aggregates.count"
+          when="{'1': 'Has',
+                 'other': 'Have'}">
+        </span>
+        Raised
+      </h3>
       <h1 class="main-amount label label-primary">${{campaign.total() | number}}</h1>
       <h2 class="main-url-prefix">Pledge Your Support At</h2>
       <h1 class="main-url">{{campaign.host}}</h1>
