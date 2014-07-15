@@ -4,7 +4,7 @@ module.exports = function ($stateProvider) {
   $stateProvider
     .state('campaign', {
       abstract: true,
-      template: '<ui-view/>',
+      template: '<div ui-view class="full-height"></div>',
       url: '/campaigns/:id',
       resolve: {
         campaign: [

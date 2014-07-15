@@ -1,9 +1,9 @@
-<div class="campaign">
-  <div class="main">
+<div class="projection">
+  <div class="main container">
     <div class="main-body">
-      <h2 class="count-header">{{campaign.firebase.aggregates.count}} Donors</h2>
+      <h1 class="count-header">{{campaign.firebase.aggregates.count}} Donors</h2>
       <h3 class="main-amount-prefix">Have Raised</h3>
-      <h1 class="main-amount">${{campaign.total() | number}}</h1>
+      <h1 class="main-amount label label-primary">${{campaign.total() | number}}</h1>
       <h2 class="main-url-prefix">Pledge Your Support At</h2>
       <h1 class="main-url">{{campaign.host}}</h1>
     </div>
@@ -14,8 +14,8 @@
     </header>
     <div class="sidebar-body">
       <ul class="donor-list">
-        <li ng-repeat="pledge in campaign.firebase.pledges | orderByPriority | reverse | limitTo:5">
-          <h3 class="donor-name" ng-class="{anonymous: pledge.anonymous}">
+        <li ng-repeat="pledge in campaign.firebase.pledges | orderByPriority | reverse | limitTo:5" class="donor-list-item">
+          <h3 class="donor-list-name" ng-class="{anonymous: pledge.anonymous}">
             {{pledge.anonymous ? 'Anonymous' : pledge.donor.name}}
           </h3>
         </li>
