@@ -2,3 +2,9 @@ $base-font-size: 18px;
 $font: 'tablet-gothic', sans-serif;
 $primary-color: #4A90E2;
 $primary-color-border: #3684DE;
+
+// Breakpoints
+$medium-width: 768px;
+$large-width: 1024px;
+$medium: "(min-width: #{$medium-width})";
+$large: "(min-width: #{$large-width})";
