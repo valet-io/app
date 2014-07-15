@@ -14,6 +14,7 @@ angular
     require('../projection')
   ])
   .controller('AppController', [
+    '$scope',
     require('./controller')
   ])
   .config([
