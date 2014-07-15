@@ -6,13 +6,8 @@ before_script:
 - bower install
 cache:
   directories:
-<<<<<<< HEAD
     - node_modules
 before_deploy: sh ./scripts/build.sh
-=======
-  - node_modules
-before_deploy: sh ./scripts/ci-build.sh
->>>>>>> master
 deploy:
 - provider: divshot
   environment: development
