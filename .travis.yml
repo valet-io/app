@@ -6,8 +6,13 @@ before_script:
 - bower install
 cache:
   directories:
+<<<<<<< HEAD
     - node_modules
 before_deploy: sh ./scripts/build.sh
+=======
+  - node_modules
+before_deploy: sh ./scripts/ci-build.sh
+>>>>>>> master
 deploy:
 - provider: divshot
   environment: development
@@ -25,3 +30,6 @@ deploy:
   on:
     repo: valet-io/projector-app
     branch: master
+notifications:
+  slack:
+    secure: T1/4MdXdzio7tOqsGaQVGpJ5fVHcx/Y9BzotsnwpFwbIfpkNZMsu1nGlwU6QC7Of5y/BONeJRvbLrGCyAoknwvKTAVfZlsYta1FbYqfBm9naZ0GmyDCt9riftJK58NrkJI49wYsmBueFo28WJFOXnuWDKIcEoOY7COqKuuL/S2c=

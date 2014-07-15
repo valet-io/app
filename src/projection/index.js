@@ -9,6 +9,7 @@ require('angular')
     'campaign',
     require('./controller')
   ])
+  .filter('reverse', require('./reverse'))
   .config([
     '$stateProvider',
     require('./routes')

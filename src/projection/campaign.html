@@ -14,7 +14,7 @@
     </header>
     <div class="sidebar-body">
       <ul class="donor-list">
-        <li ng-repeat="pledge in campaign.firebase.pledges | orderByPriority | limitTo:5 | orderBy:'timestamp':true">
+        <li ng-repeat="pledge in campaign.firebase.pledges | orderByPriority | reverse | limitTo:5">
           <h3 class="donor-name" ng-class="{anonymous: pledge.anonymous}">
             {{pledge.anonymous ? 'Anonymous' : pledge.donor.name}}
           </h3>
