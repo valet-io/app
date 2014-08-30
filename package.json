@@ -61,6 +61,7 @@
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "Firebase": "global:Firebase"
+    "Firebase": "global:Firebase",
+    "env": "global:__env"
   }
 }
