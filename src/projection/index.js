@@ -7,6 +7,7 @@ require('angular')
   .controller('ProjectionController', [
     '$scope',
     'campaign',
+    '$document',
     require('./controller')
   ])
   .filter('reverse', require('./reverse'))
