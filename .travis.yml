@@ -17,7 +17,6 @@ deploy:
   on:
     repo: valet-io/projector-app
     branch: master
-deploy:
 - provider: divshot
   environment: production
   api_key:
