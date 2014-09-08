@@ -18,7 +18,7 @@
   "homepage": "https://github.com/valet-io/projector-app",
   "dependencies": {
     "angular-ui-router": "~0.2.10",
-    "ng-base-model": "git://github.com/valet-io/ng-base-model",
+    "ng-base-model": "bendrucker/ng-base-model#v0.4.1",
     "screenfull": "~1.2.1"
   },
   "devDependencies": {
