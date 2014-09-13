@@ -2,7 +2,8 @@
 
 require('angular')
   .module('Projection', [
-    'ui.router'
+    'ui.router',
+    'ngFitText'
   ])
   .controller('ProjectionController', [
     '$scope',

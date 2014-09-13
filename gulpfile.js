@@ -58,6 +58,7 @@ gulp.task('vendor', function () {
     './components/stripe/index.js',
     './components/firebase/firebase.js',
     './components/angularfire/angularfire.js',
+    './components/ngFitText/ng-FitText.js',
     './components/raven-js/dist/raven.js',
     './components/raven-js/plugins/angular.js'
   ])
