@@ -7,7 +7,7 @@ angular.module('config', [])
   .constant('config', config);
 
 angular
-  .module('ProjectorApp', [
+  .module('ValetApp', [
     'config',
     require('ng-base-model'),
     require('../campaign'),
@@ -27,4 +27,4 @@ angular
     }
   ]);
 
-module.exports = 'ProjectorApp';
+module.exports = 'ValetApp';
