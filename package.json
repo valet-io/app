@@ -1,21 +1,21 @@
 {
-  "name": "projector-app",
+  "name": "valet-app",
   "version": "0.0.0",
   "private": true,
-  "description": "Client side app for displaying live pledge results on a projector screen",
-  "main": "index.js",
+  "description": "Valet.io app for administering campaigns and displaying them on a projector",
+  "main": "./src/index.js",
   "scripts": {
     "test": ""
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/valet-io/projector-app.git"
+    "url": "git://github.com/valet-io/app.git"
   },
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me/)",
   "bugs": {
-    "url": "https://github.com/valet-io/projector-app/issues"
+    "url": "https://github.com/valet-io/app/issues"
   },
-  "homepage": "https://github.com/valet-io/projector-app",
+  "homepage": "https://github.com/valet-io/app",
   "dependencies": {
     "angular-ui-router": "~0.2.10",
     "ng-base-model": "bendrucker/ng-base-model#v0.4.1",

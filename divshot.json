@@ -1,5 +1,5 @@
 {
-  "name": "projector-valet-io",
+  "name": "app-valet-io",
   "root": "./build",
   "routes": {
     "**": "index.html"

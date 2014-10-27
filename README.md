@@ -1,4 +1,4 @@
-pledge-projector-app
+valet-app
 ====================
 
-Client side app for displaying live pledge results on a projector screen
+Valet.io app for administering campaigns and displaying them on a projector
