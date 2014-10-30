@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "private": true,
   "description": "Valet.io app for administering campaigns and displaying them on a projector",
-  "main": "./src/index.js",
+  "main": "./src",
   "scripts": {
     "test": ""
   },
@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/valet-io/app",
   "dependencies": {
-    "angular-ui-router": "~0.2.10",
+    "angular-ui-router": "~0.2.11",
     "ng-base-model": "bendrucker/ng-base-model#v0.4.1",
     "screenfull": "~1.2.1"
   },
   "devDependencies": {
     "browserify": "~3.44.2",
+    "browserify-istanbul": "~0.1.2",
     "browserify-shim": "~3.4.1",
     "chai": "~1.9.1",
     "connect": "~2.19.6",
@@ -39,12 +40,16 @@
     "gulp-uglify": "~0.3.1",
     "gulp-util": "~2.2.17",
     "jshint-stylish": "~0.2.0",
-    "karma": "~0.12.9",
-    "karma-bro": "~0.4.0",
+    "karma": "~0.12.24",
+    "karma-as-promised": "~1.0.0",
+    "karma-bro": "~0.9.0",
     "karma-chai-sinon": "~0.1.3",
     "karma-cli": "~0.0.4",
+    "karma-coverage": "~0.2.6",
+    "karma-env": "~0.1.0",
     "karma-mocha": "~0.1.3",
     "karma-phantomjs-launcher": "~0.1.4",
+    "lodash": "~2.4.1",
     "mocha": "~1.18.2",
     "node-bourbon": "~1.2.3",
     "run-sequence": "~0.3.6",

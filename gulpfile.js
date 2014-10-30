@@ -7,6 +7,8 @@ var source      = require('vinyl-source-stream');
 var browserify  = require('browserify');
 var superstatic = require('superstatic');
 var watchify    = require('watchify');
+var karma       = require('karma-as-promised');
+var _           = require('lodash');
 var internals   = {};
 
 var env = plugins.util.env.env || 'development';
@@ -55,7 +57,6 @@ gulp.task('vendor', function () {
   return gulp.src([
     './components/angular/angular.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
-    './components/stripe/index.js',
     './components/firebase/firebase.js',
     './components/angularfire/angularfire.js',
     './components/ngFitText/ng-FitText.js',
@@ -110,6 +111,17 @@ gulp.task('watch', ['index', 'vendor', 'styles', 'templates'], function () {
   gulp.watch(paths.build + '/**/*', plugins.livereload.changed);
 
   return internals.bundle(bundler);
+});
+
+gulp.task('unit', function () {
+  var base = require('./karma');
+  return karma.server.start(_.extend({}, base))
+    .then(function () {
+      process.exit(0);
+    })
+    .catch(function () {
+      process.exit(1);
+    });
 });
 
 gulp.task('server', function (done) {
