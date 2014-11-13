@@ -1,121 +1,54 @@
 'use strict';
 
-var gulp        = require('gulp');
-var plugins     = require('gulp-load-plugins')();
-var runSequence = require('run-sequence');
-var source      = require('vinyl-source-stream');
-var browserify  = require('browserify');
-var superstatic = require('superstatic');
-var watchify    = require('watchify');
-var karma       = require('karma-as-promised');
-var _           = require('lodash');
-var internals   = {};
+'use strict';
 
-var env = plugins.util.env.env || 'development';
-var isEnv = function () {
-  return Array.prototype.slice.call(arguments, 0).indexOf(env) !== -1;
-};
+var gulp     = require('gulp');
+var gutil    = require('gulp-util');
+var _        = require('lodash');
+var tasks    = require('bd-gulp-tasks');
+var karma    = require('karma-as-promised');
+var sequence = require('run-sequence');
 
-var paths = {
-  src: './src/**/*.js',
-  main: './src/index.js',
-  index: './index.html',
-  templates: './src/**/*.html',
-  test: './test/**/*.js',
-  styles: './styles/main.scss',
-  build: './build'
-};
+gutil.log('Environment:', gutil.colors.cyan(tasks.env.env));
 
-plugins.util.log('Environment:', plugins.util.colors.cyan(env));
-
-gulp.task('lint', function () {
-  return gulp.src(['./src/**/*.js', './test/**/*.js', './gulpfile.js'])
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.jshint.reporter('fail'));
+tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
+tasks.use('clean', 'build');
+tasks.use('templates', './src/**/views/*.html', 'build/views');
+tasks.use('styles', './styles/main.scss', './build/styles');
+tasks.use('vendor', [
+  './components/angular/angular.js',
+  './node_modules/angular-ui-router/release/angular-ui-router.js',
+  './components/firebase/firebase.js',
+  './components/angularfire/angularfire.js',
+  './components/ngFitText/ng-FitText.js',
+  './components/raven-js/dist/raven.js',
+  './components/raven-js/plugins/angular.js'
+], './build/scripts');
+tasks.use('bundle', './src/index.js', './build/scripts', {
+  templates: './src/**/views/*.html',
+  module: 'ValetApp'
 });
-
-gulp.task('clean', function () {
-  return gulp.src('build', {read: false})
-    .pipe(plugins.rimraf());
-});
-
-gulp.task('templates', function () {
-  return gulp.src('./src/**/*.html')
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('styles', function () {
-  return gulp.src('./styles/main.scss')
-    .pipe(plugins.sass({
-      includePaths: require('node-bourbon').includePaths
-    }))
-    .pipe(gulp.dest('./build/styles'));
-});
-
-gulp.task('vendor', function () {
-  return gulp.src([
-    './components/angular/angular.js',
-    './node_modules/angular-ui-router/release/angular-ui-router.js',
-    './components/firebase/firebase.js',
-    './components/angularfire/angularfire.js',
-    './components/ngFitText/ng-FitText.js',
-    './components/raven-js/dist/raven.js',
-    './components/raven-js/plugins/angular.js'
-  ])
-  .pipe(plugins.concat('vendor.js'))
-  .pipe(plugins.if(isEnv('production', 'staging'), plugins.uglify()))
-  .pipe(gulp.dest('./build/scripts'));
-});
-
-internals.bundle = function (bundler) {
-  bundler
-    .transform('browserify-shim');
-
-  if (isEnv('production', 'staging')) { 
-    bundler.transform('uglifyify');
+tasks.use('index', './src/index.html', './build');
+tasks.use('server', void 0, void 0, {
+  localEnv: {
+    'firebase__endpoint': 'https://valet-io-events-dev.firebaseio.com',
+    'valet__api': 'http://valet-io-pledge-dev.herokuapp.com'
   }
-
-  return bundler
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(plugins.if(
-      isEnv('production', 'staging'),
-      plugins.streamify(plugins.uglify())
-    ))
-    .pipe(gulp.dest('./build/scripts'));
-};
-
-gulp.task('bundle', function () {
-  return internals.bundle(browserify(paths.main));
 });
-
-gulp.task('index', function () {
-  return gulp.src('./index.html')
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('build', ['clean'], function (done) {
-  runSequence(['bundle', 'vendor', 'templates', 'index', 'styles'], done);
-});
-
-gulp.task('watch', ['index', 'vendor', 'styles', 'templates'], function () {
-  var bundler = watchify(paths.main);
-  bundler.on('update', internals.bundle.bind(null, bundler));
-
-  gulp.watch(paths.index, ['index']);
-  gulp.watch(paths.templates, ['templates']);
-  gulp.watch('./styles/**/*.scss', ['styles']);
-
-  plugins.livereload.listen();
-  gulp.watch(paths.build + '/**/*', plugins.livereload.changed);
-
-  return internals.bundle(bundler);
+tasks.use('watch', {
+  './src/**/views/*.html': 'templates',
+  './src/index.html': 'index',
+  './styles/**/*.scss': 'styles',
+  './src/index.js': 'bundle'
+}, void 0,
+{
+  build: './build',
+  prerequisites: ['templates', 'styles', 'vendor', 'index']
 });
 
 gulp.task('unit', function () {
   var base = require('./karma');
-  return karma.server.start(_.extend({}, base))
+  return karma.server.start(_.extend({}, base, gutil.env.sauce && require('./karma.js')))
     .then(function () {
       process.exit(0);
     })
@@ -124,18 +57,8 @@ gulp.task('unit', function () {
     });
 });
 
-gulp.task('server', function (done) {
-  var server = superstatic({
-    host: isEnv('development') && '0.0.0.0',
-    localEnv: require('./environments/' + env + '.json')
-  });
-
-  if (isEnv('development')) server.use(require('connect-livereload')()); 
-
-  server.listen(8000, function () {
-    plugins.util.log('Running on http://localhost:8000');
-    done();
-  });
+gulp.task('build', ['clean'], function (done) {
+  sequence(['bundle', 'vendor', 'templates', 'styles', 'fonts', 'images'], 'index', done);
 });
 
 gulp.task('serve', ['watch', 'server']);
