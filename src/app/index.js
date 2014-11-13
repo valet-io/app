@@ -9,14 +9,12 @@ angular.module('config', [])
 angular
   .module('ValetApp', [
     'config',
+    require('angular-loading'),
     require('ng-base-model'),
     require('../campaign'),
     require('../projection')
   ])
-  .controller('AppController', [
-    '$scope',
-    require('./controller')
-  ])
+  .controller('AppController', require('./controller'))
   .config([
     '$locationProvider',
     'BaseModelProvider',

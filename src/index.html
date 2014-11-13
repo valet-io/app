@@ -1,4 +1,4 @@
-<html ng-app="ValetApp" ng-controller="AppController" ng-strict-di>
+<html ng-app="ValetApp" ng-controller="AppController as app" ng-strict-di>
   <head>
     <meta charset="utf-8">
     <base href="/">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body>
-    <div class="loading-indicator" ng-hide="loaded">
+    <div class="loading-indicator" ng-hide="app.loaded">
       <div class="loading-indicator-content">
         <div class="circle circle-1"></div>
         <div class="circle circle-2"></div>
