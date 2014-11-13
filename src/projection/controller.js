@@ -13,3 +13,4 @@ module.exports = function ($scope, campaign, $document) {
     });
   }
 };
+module.exports.$inject = ['$scope', 'campaign', '$document'];

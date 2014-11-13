@@ -32,11 +32,11 @@
     </header>
     <div class="sidebar-body">
       <ul class="donor-list">
-        <!-- <li ng-repeat="pledge in campaign.firebase.pledges | limitTo:5" class="donor-list-item">
+        <li ng-repeat="pledge in campaign.pledges | reverse" class="donor-list-item">
           <h3 class="donor-list-name" ng-class="{anonymous: pledge.anonymous}">
             {{pledge.anonymous ? 'Anonymous' : pledge.donor.name}}
           </h3>
-        </li> -->
+        </li>
       </ul>
     </div>
     <!-- <footer class="sidebar-footer">

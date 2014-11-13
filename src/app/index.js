@@ -17,6 +17,7 @@ angular
     require('../projection')
   ])
   .controller('AppController', require('./controller'))
+  .config(provideStripe)
   .config(configure);
 
 function configure (convexConfig, $locationProvider, config) {
@@ -25,5 +26,12 @@ function configure (convexConfig, $locationProvider, config) {
   $locationProvider.html5Mode(true);
 }
 configure.$inject = ['convexConfig', '$locationProvider', 'config'];
+
+// temporarily provide a dummy stripe service
+// we don't need it yet but the payment model (external) depends on it
+function provideStripe ($provide) {
+  $provide.value('stripe', {});
+}
+provideStripe.$inject = ['$provide'];
 
 module.exports = 'ValetApp';

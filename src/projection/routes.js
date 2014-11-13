@@ -10,8 +10,12 @@ module.exports = function ($stateProvider) {
       resolve: {
         campaign: [
           'campaign',
-          function (campaign) {
-            return campaign.$subscribe(['aggregates', 'options'], true);
+          '$q',
+          function (campaign, $q) {
+            return $q.all([
+              campaign.$subscribe(['aggregates', 'options'], true),
+              campaign.pledges.$subscribe()
+            ]);
           }
         ]
       }
