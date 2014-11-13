@@ -5,7 +5,7 @@
 var screenfull = require('screenfull');
 
 module.exports = function ($scope, campaign, $document) {
-  $scope.campaign = campaign;
+  // campaign.pledges.$subscribe();
   $scope.fullscreen = screenfull;
   if (screenfull) {
     $document.on(screenfull.raw.fullscreenchange, function () {

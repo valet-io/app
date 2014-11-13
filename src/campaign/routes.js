@@ -2,11 +2,7 @@
 
 var resolve = {
   campaign: function (Campaign, $stateParams) {
-    return new Campaign({id: $stateParams.id})
-      .fetch()
-      .then(function (campaign) {
-        return campaign.listen();
-      });
+    return new Campaign({id: $stateParams.id}).$fetch();
   }
 };
 
@@ -18,6 +14,13 @@ module.exports = function ($stateProvider) {
       abstract: true,
       template: '<div ui-view class="full-height"></div>',
       url: '/campaigns/:id',
+      controller: [
+        '$scope',
+        'campaign',
+        function ($scope, campaign) {
+          $scope.campaign = campaign;
+        }
+      ],
       resolve: resolve
     });
 };

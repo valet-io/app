@@ -2,16 +2,7 @@
 
 require('angular')
   .module('Campaign', [
-    require('ng-base-model'),
-    'ui.router',
-    'firebase'
-  ])
-  .factory('Campaign', [
-    'BaseModel',
-    '$firebase',
-    '$q',
-    'config',
-    require('./model')
+    'ui.router'
   ])
   .config([
     '$stateProvider',

@@ -4,11 +4,10 @@
 <div class="projection">
   <div class="main container">
     <div class="main-body">
-
       <h1 
         class="count-header"
         ng-pluralize
-        count="campaign.firebase.aggregates.count"
+        count="campaign.count"
         when="{'0': 'We',
                '1': '1 Donor',
                'other': '{} Donors'}">
@@ -16,13 +15,13 @@
       <h3 class="main-amount-prefix">
         <span
           ng-pluralize
-          count="campaign.firebase.aggregates.count"
+          count="campaign.total"
           when="{'1': 'Has',
                  'other': 'Have'}">
         </span>
         Raised
       </h3>
-      <h1 class="main-amount label label-primary">${{campaign.total() | number}}</h1>
+      <h1 class="main-amount label label-primary">{{campaign.total | currency:'$':0}}</h1>
       <h2 class="main-url-prefix">Pledge Your Support At</h2>
       <h1 class="main-url" fittext>{{campaign.host}}</h1>
     </div>
@@ -33,11 +32,11 @@
     </header>
     <div class="sidebar-body">
       <ul class="donor-list">
-        <li ng-repeat="pledge in campaign.firebase.pledges | orderByPriority | reverse | limitTo:5" class="donor-list-item">
+        <!-- <li ng-repeat="pledge in campaign.firebase.pledges | limitTo:5" class="donor-list-item">
           <h3 class="donor-list-name" ng-class="{anonymous: pledge.anonymous}">
             {{pledge.anonymous ? 'Anonymous' : pledge.donor.name}}
           </h3>
-        </li>
+        </li> -->
       </ul>
     </div>
     <!-- <footer class="sidebar-footer">

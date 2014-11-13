@@ -10,19 +10,20 @@ angular
   .module('ValetApp', [
     'config',
     require('angular-loading'),
-    require('ng-base-model'),
+    require('convex'),
+    require('convex-firebase'),
+    require('valet-io-pledge-models'),
     require('../campaign'),
     require('../projection')
   ])
   .controller('AppController', require('./controller'))
-  .config([
-    '$locationProvider',
-    'BaseModelProvider',
-    'config',
-    function ($locationProvider, BaseModelProvider, config) {
-      $locationProvider.html5Mode(true);
-      BaseModelProvider.baseURL = config.valet.api;
-    }
-  ]);
+  .config(configure);
+
+function configure (convexConfig, $locationProvider, config) {
+  convexConfig.base = config.valet.api;
+  convexConfig.firebase = config.firebase.endpoint;
+  $locationProvider.html5Mode(true);
+}
+configure.$inject = ['convexConfig', '$locationProvider', 'config'];
 
 module.exports = 'ValetApp';
