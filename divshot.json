@@ -3,5 +3,10 @@
   "root": "./build",
   "routes": {
     "**": "index.html"
+  },
+  "cache_control": {
+    "/scripts/*.js": "public, max-age=31536000",
+    "/styles/*.css": "public, max-age=31536000",
+    "/**": "public, max-age=600"
   }
 }
