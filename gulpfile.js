@@ -56,7 +56,7 @@ gulp.task('unit', function () {
 });
 
 gulp.task('build', ['clean'], function (done) {
-  sequence(['bundle', 'vendor', 'templates', 'styles', 'fonts', 'images'], 'index', done);
+  sequence(['bundle', 'vendor', 'templates', 'styles'], 'index', done);
 });
 
 gulp.task('serve', ['watch', 'server']);
