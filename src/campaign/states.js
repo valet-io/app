@@ -10,8 +10,8 @@ module.exports = function ($stateProvider) {
     })
     .state('campaign.single', {
       abstract: true,
-      template: '<div ui-view class="full-height"></div>',
-      url: '/campaigns/:id',
+      template: '<div ui-view></div>',
+      url: '/:id',
       controller: 'CampaignController',
       resolve: {
         campaign: campaign
