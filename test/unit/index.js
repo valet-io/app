@@ -19,4 +19,5 @@ describe('Campaign', function () {
 });
 describe('Projector', function () {
   describe('States', require('./projector/states'));
+  describe('Controllers', require('./projector/controllers'));
 });
