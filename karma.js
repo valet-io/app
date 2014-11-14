@@ -7,7 +7,7 @@ module.exports = {
     './components/firebase/firebase.js',
     './components/angularfire/angularfire.js',
     './components/ngFitText/ng-FitText.js',
-    'test/unit/**/*.js'
+    'test/unit/index.js'
   ],
   preprocessors: {
     'test/unit/**/*.js': ['browserify']
