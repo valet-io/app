@@ -9,7 +9,7 @@ module.exports = function () {
     it('publishes the campaign on the scope', angular.mock.inject(function ($injector) {
       var scope = $injector.get('$rootScope').$new();
       var campaign = {};
-      $controller('CampaignController', {
+      $injector.get('$controller')('CampaignController', {
          $scope: scope,
          campaign: campaign
        });

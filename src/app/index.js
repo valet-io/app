@@ -14,7 +14,7 @@ angular
     require('convex-firebase'),
     require('valet-io-pledge-models'),
     require('../campaign'),
-    require('../projection')
+    require('../projector')
   ])
   .controller('AppController', require('./controller'))
   .config(provideStripe)
