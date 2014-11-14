@@ -8,7 +8,7 @@ module.exports = function ($stateProvider) {
       url: '/projector',
       templateUrl: '/views/projector/campaign.html',
       resolve: {
-        campaign: subscribe
+        subscribe: subscribe
       }
     });
 };
@@ -18,9 +18,6 @@ function subscribe (campaign, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
     campaign.pledges.$subscribe()
-  ])
-  .then(function () {
-    return campaign;
-  });
+  ]);
 }
 subscribe.$inject = ['campaign', '$q'];
