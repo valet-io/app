@@ -13,3 +13,6 @@ afterEach(function () {
 describe('App', function () {
   describe('Controller', require('./app/controller'));
 });
+describe('Campaign', function () {
+  describe('States', require('./campaign/states'));
+});

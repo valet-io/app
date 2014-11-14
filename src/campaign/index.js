@@ -4,9 +4,7 @@ require('angular')
   .module('Campaign', [
     'ui.router'
   ])
-  .config([
-    '$stateProvider',
-    require('./routes')
-  ]);
+  .controller('CampaignController', require('./controllers').Campaign)
+  .config(require('./states'));
 
 module.exports = 'Campaign';
