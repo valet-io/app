@@ -15,4 +15,5 @@ describe('App', function () {
 });
 describe('Campaign', function () {
   describe('States', require('./campaign/states'));
+  describe('Controllers', require('./campaign/controllers'));
 });
