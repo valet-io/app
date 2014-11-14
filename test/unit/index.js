@@ -20,4 +20,7 @@ describe('Campaign', function () {
 describe('Projector', function () {
   describe('States', require('./projector/states'));
   describe('Controllers', require('./projector/controllers'));
+  describe('Utilities', function () {
+    describe('filter: reverse', require('./projector/reverse'));
+  });
 });
