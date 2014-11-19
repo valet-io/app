@@ -3,11 +3,12 @@
 var angular = require('angular');
 
 module.exports = function () {
-  var $injector, campaign, $state, $timeout;
+  var $injector, campaign, config, $state, $timeout;
   beforeEach(angular.mock.inject(function (_$injector_) {
     $injector    = _$injector_;
     $state       = $injector.get('$state');
     $timeout     = $injector.get('$timeout');
+    config       = {};
     campaign = {
       $subscribe: sinon.stub(),
       pledges: {
@@ -18,7 +19,8 @@ module.exports = function () {
 
   function resolve () {
     return $injector.invoke($state.get('projector').resolve.campaign, void 0, {
-      campaign: campaign
+      campaign: campaign,
+      projectorConfig: config
     });
   }
 
@@ -32,9 +34,15 @@ module.exports = function () {
   });
 
   it('subscribes to pledges', function () {
+    config.donorCount = 10;
     resolve();
     $timeout.flush();
-    expect(campaign.pledges.$subscribe).to.have.been.called;
+    expect(campaign.pledges.$subscribe)
+      .to.have.been.calledWithMatch({
+        query: {
+          limitToLast: 10
+        }
+      });
   });
 
   it('resolves the campaign', function () {
