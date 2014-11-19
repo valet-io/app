@@ -6,12 +6,18 @@ module.exports = function ($stateProvider) {
       parent: 'campaign.single',
       abstract: true,
       resolve: {
+        projectorConfig: function () {
+          return {
+            donorCount: 8 
+          }
+        },
         campaign: subscribe
       },
       views: {
         '@': {
           templateUrl: '/views/projector/index.html',
-          controller: 'ProjectorController'
+          controller: 'ProjectorController',
+          controllerAs: 'projector'
         }
       }
     })
@@ -29,13 +35,17 @@ module.exports = function ($stateProvider) {
 };
 module.exports.$inject = ['$stateProvider'];
 
-function subscribe (campaign, $q) {
+function subscribe (campaign, config, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
-    campaign.pledges.$subscribe()
+    campaign.pledges.$subscribe({
+      query: {
+        limitToLast: config.donorCount
+      }
+    })
   ])
   .then(function () {
     return campaign;
   });
 }
-subscribe.$inject = ['campaign', '$q'];
+subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
