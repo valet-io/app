@@ -13,6 +13,7 @@ angular
     require('convex'),
     require('convex-firebase'),
     require('valet-io-pledge-models'),
+    require('valet-io-directives'),
     require('../campaign'),
     require('../projector')
   ])
