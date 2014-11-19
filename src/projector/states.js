@@ -4,13 +4,24 @@ module.exports = function ($stateProvider) {
   $stateProvider
     .state('projector', {
       parent: 'campaign.single',
+      abstract: true,
       controller: 'ProjectorController',
-      url: '/projector',
-      templateUrl: '/views/projector/campaign.html',
+      templateUrl: '/views/projector/index.html',
       resolve: {
         subscribe: subscribe
       }
-    });
+    })
+    .state('projector.default', {
+      url: '/projector',
+      views: {
+        main: {
+          templateUrl: '/views/projector/main.html'
+        },
+        sidebar: {
+          templateUrl: '/views/projector/sidebar.html'
+        }
+      }
+    })
 };
 module.exports.$inject = ['$stateProvider'];
 

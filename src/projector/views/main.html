@@ -1,0 +1,22 @@
+<div class="main-body">
+  <h1 
+    class="count-header"
+    ng-pluralize
+    count="campaign.count"
+    when="{'0': 'We',
+           '1': '1 Donor',
+           'other': '{} Donors'}">
+  </h1>
+  <h3 class="main-amount-prefix">
+    <span
+      ng-pluralize
+      count="campaign.count"
+      when="{'1': 'Has',
+             'other': 'Have'}">
+    </span>
+    Raised
+  </h3>
+  <h1 class="main-amount label label-primary">{{campaign.total | currency:'$':0}}</h1>
+  <h2 class="main-url-prefix">Pledge Your Support At</h2>
+  <h1 class="main-url" fittext>{{campaign.host}}</h1>
+</div>
