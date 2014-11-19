@@ -1,7 +1,12 @@
 'use strict';
 
-module.exports = function ($scope, campaign) {
+var screenfull = require('screenfull');
+
+module.exports = function ($scope, campaign, $document) {
   $scope.campaign = campaign;
-  $scope.fullscreen = require('screenfull');;
+  $scope.fullscreen = screenfull;
+  $document.on(screenfull.raw.fullscreenchange, function () {
+    $scope.$digest();
+  });
 };
-module.exports.$inject = ['$scope', 'campaign'];
+module.exports.$inject = ['$scope', 'campaign', '$document'];
