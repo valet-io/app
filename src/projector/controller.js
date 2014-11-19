@@ -1,8 +1,6 @@
 'use strict';
 
-var screenfull = require('screenfull');
-
-module.exports = function ($scope, campaign, projectorConfig, $document) {
+module.exports = function ($scope, campaign, screenfull, projectorConfig, $document) {
   $scope.campaign = campaign;
   this.config = projectorConfig;
   $scope.fullscreen = screenfull;
@@ -12,4 +10,10 @@ module.exports = function ($scope, campaign, projectorConfig, $document) {
     });
   }
 };
-module.exports.$inject = ['$scope', 'campaign', 'projectorConfig', '$document'];
+module.exports.$inject = [
+  '$scope',
+  'campaign',
+  'screenfull',
+  'projectorConfig',
+  '$document'
+];
