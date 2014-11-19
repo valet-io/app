@@ -5,10 +5,14 @@ module.exports = function ($stateProvider) {
     .state('projector', {
       parent: 'campaign.single',
       abstract: true,
-      controller: 'ProjectorController',
-      templateUrl: '/views/projector/index.html',
       resolve: {
-        subscribe: subscribe
+        campaign: subscribe
+      },
+      views: {
+        '@': {
+          templateUrl: '/views/projector/index.html',
+          controller: 'ProjectorController'
+        }
       }
     })
     .state('projector.default', {
@@ -29,6 +33,9 @@ function subscribe (campaign, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
     campaign.pledges.$subscribe()
-  ]);
+  ])
+  .then(function () {
+    return campaign;
+  });
 }
 subscribe.$inject = ['campaign', '$q'];

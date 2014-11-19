@@ -17,10 +17,9 @@ module.exports = function () {
   }));
 
   function resolve () {
-    return $injector.get('$resolve')
-      .resolve($state.get('projector').resolve, {
-        campaign: campaign
-      });
+    return $injector.invoke($state.get('projector').resolve.campaign, void 0, {
+      campaign: campaign
+    });
   }
 
   it('subscribes to aggregates and options', function () {
@@ -36,6 +35,13 @@ module.exports = function () {
     resolve();
     $timeout.flush();
     expect(campaign.pledges.$subscribe).to.have.been.called;
+  });
+
+  it('resolves the campaign', function () {
+    resolve().then(function (_campaign_) {
+      expect(campaign).to.equal(_campaign_);
+    });
+    $timeout.flush();
   });
 
 };
