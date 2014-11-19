@@ -9,7 +9,7 @@ module.exports = function ($stateProvider) {
         projectorConfig: function () {
           return {
             donorCount: 8 
-          }
+          };
         },
         campaign: subscribe
       },
@@ -31,7 +31,7 @@ module.exports = function ($stateProvider) {
           templateUrl: '/views/projector/sidebar.html'
         }
       }
-    })
+    });
 };
 module.exports.$inject = ['$stateProvider'];
 

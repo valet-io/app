@@ -24,6 +24,16 @@ module.exports = function () {
     });
   }
 
+  it('configures the projector sidebar', function () {
+    $injector.get('$resolve').resolve($state.get('projector').resolve)
+      .then(function (resolved) {
+        expect(resolved.projectorConfig)
+          .to.have.property('donorCount')
+          .that.is.a('number');
+      });
+    $timeout.flush();
+  });
+
   it('subscribes to aggregates and options', function () {
     resolve();
     $timeout.flush();
