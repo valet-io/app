@@ -21,6 +21,28 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
   }
 }
 
+@include keyframes(fadeInLeft) {
+  0% {
+    opacity: 0;
+    @include transform(translate3d(10%, 0, 0));
+  }
+  100% {
+    opacity: 1;
+    @include transform(none);
+  }
+}
+
+@include keyframes(slideDown) {
+  0% {
+    @include transform(translate3d(0, 25%, 0));
+    opacity: 0;
+  }
+  100% {
+    @include transform(none);
+    opacity: 1;
+  }
+}
+
 .donor-list {
   &-item {
     font-size: 1.5em;
@@ -29,6 +51,15 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
     &:first-child {
       margin-top: 0;
     }
+
+    &.ng-enter {
+      @include animation(fadeInLeft .25s linear);
+      &-stagger {
+        @include animation-delay(.03s);
+        @include animation-duration(0s);
+      }
+    }
+
   }
 
 }

@@ -17,6 +17,7 @@ tasks.use('templates', './src/**/views/*.html', 'build/views');
 tasks.use('styles', './styles/main.scss', './build/styles');
 tasks.use('vendor', [
   './node_modules/angular/angular.js',
+  './node_modules/angular-animate/angular-animate.js',
   './node_modules/angular-ui-router/release/angular-ui-router.js',
   './components/firebase/firebase.js',
   './components/angularfire/angularfire.js',

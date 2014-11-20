@@ -9,6 +9,7 @@ angular.module('config', [])
 angular
   .module('ValetApp', [
     'config',
+    'ngAnimate',
     require('angular-loading'),
     require('convex'),
     require('convex-firebase'),
