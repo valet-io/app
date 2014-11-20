@@ -46,7 +46,7 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
       margin-top: 0;
     }
 
-    $animation-time: 2s;
+    $animation-time: .2s;
 
     &.ng-enter {
       @include animation(slideDown $animation-time linear);
