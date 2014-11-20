@@ -25,13 +25,12 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
   0% {
     opacity: 0;
     max-height: 0;
+    @include transform(translate3d(0, -100%, 0));
   }
-  10% {
-    opacity: 0;
-    @include transform(translate3d(0, -50%, 0));
+  25% {
+    max-height: 999px;
   }
   100% {
-    max-height: 999px;
     opacity: 1;
     @include transform(none);
   }
@@ -49,7 +48,7 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
     $animation-time: .2s;
 
     &.ng-enter {
-      @include animation(slideDown $animation-time linear);
+      @include animation(slideDown $animation-time ease-in);
       &-stagger {
         @include animation-delay($animation-time / 2);
         @include animation-duration(0s);
