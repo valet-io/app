@@ -43,4 +43,16 @@
   font-weight: 300;
 
   cursor: pointer;
+
+  &.ng-hide-remove, &.ng-hide-add {
+    transition: all 0s all linear;
+    &-active {
+      transition: all .5s ease-out;
+      transition-delay: 1s;
+    }
+  }
+
+  &.ng-hide {
+    @include transform(translate3d(0, -100%, 0));
+  }
 }
