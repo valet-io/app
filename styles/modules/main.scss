@@ -27,6 +27,25 @@
   }
 }
 
+@function highlight($color) {
+  @return lighten(saturate($primary-color-border, 15%), 10%);
+}
+
+@include keyframes(pulse) {
+  from {
+    background-color: $primary-color;
+    border-color: $primary-color-border;
+  }
+  50% {
+    background-color: highlight($primary-color);
+    border-color: highlight($primary-color-border);
+  }
+  to {
+    background-color: $primary-color;
+    border-color: $primary-color-border;
+  }
+}
+
 .go-fullscreen {
   font-size: .75em;
 
@@ -37,12 +56,15 @@
   color: white;
 
   text-align: center;
-  padding: .5em;
+  padding: 1em .5em;
 
   text-transform: uppercase;
   font-weight: 300;
 
   cursor: pointer;
+
+  @include animation(pulse 2s ease);
+  @include animation-iteration-count(infinite);
 
   &.ng-hide-remove, &.ng-hide-add {
     transition: all 0s all linear;
