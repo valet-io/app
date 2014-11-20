@@ -8,7 +8,7 @@ module.exports = function ($stateProvider) {
       resolve: {
         projectorConfig: function () {
           return {
-            donorCount: 8 
+            donorCount: 6
           };
         },
         campaign: subscribe
