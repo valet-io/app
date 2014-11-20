@@ -5,8 +5,9 @@
 }
 
 .label-primary {
+  $base: saturate(darken($primary-color, 5%), 5%);
   color: white;
-  text-shadow: 0 3px 0 $primary-color-border;
-  background-color: $primary-color;
-  border-bottom: .1em solid $primary-color-border;
+  text-shadow: 0 3px 0 darken($base, 10%);
+  @include linear-gradient(lighten($base, 10%), $base 85%, $base 90%, darken($base, 5%));
+  box-shadow: 0 0 0 3px rgba(black, .15);
 }
