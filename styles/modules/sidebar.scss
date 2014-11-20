@@ -21,28 +21,6 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
   }
 }
 
-@include keyframes(fadeInLeft) {
-  0% {
-    opacity: 0;
-    @include transform(translate3d(10%, 0, 0));
-  }
-  100% {
-    opacity: 1;
-    @include transform(none);
-  }
-}
-
-@include keyframes(slideDown) {
-  0% {
-    @include transform(translate3d(0, 25%, 0));
-    opacity: 0;
-  }
-  100% {
-    @include transform(none);
-    opacity: 1;
-  }
-}
-
 .donor-list {
   &-item {
     font-size: 1.5em;
@@ -52,11 +30,21 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
       margin-top: 0;
     }
 
+    $animation-time: .25s;
+
     &.ng-enter {
-      @include animation(fadeInLeft .25s linear);
+      max-height: 0;
+      opacity: 0;
+      @include transform(translate3d(0, -25%, 0));
+      transition: all $animation-time ease-in;
+      &-active {
+        max-height: 999px;
+        opacity: 1;
+        @include transform(none);
+      }
       &-stagger {
-        @include animation-delay(.03s);
-        @include animation-duration(0s);
+        transition-delay: $animation-time / 2;
+        transition-duration: 0s;
       }
     }
 
