@@ -1,9 +1,10 @@
+'use strict';
+
 module.exports = function ($animate) {
   return {
     restrict: 'EA',
     link: function (scope, element, attributes) {
       scope.$watch(attributes.flash, function (newVal, oldVal) {
-        console.log(newVal, oldVal);
         if (newVal !== oldVal) {
           $animate.addClass(element, 'flash')
             .then(function () {
@@ -12,6 +13,6 @@ module.exports = function ($animate) {
         }
       });
     }
-  }
+  };
 };
 module.exports.$inject = ['$animate'];
