@@ -1,3 +1,30 @@
+@include keyframes(tada) {
+  $tada-scale: .025;
+  $tada-rotate: .5deg;
+  $tada-big: 1 * (1 + $tada-scale);
+  $tada-small: 1 * (1 - $tada-scale);
+
+  0% {
+    @include transform(scale3d(1, 1, 1));
+  }
+
+  10%, 20% {
+    @include transform(scale3d($tada-small, $tada-small, $tada-small) rotate3d(0, 0, 1, -1 * $tada-rotate));
+  }
+
+  30%, 50%, 70%, 90% {
+    @include transform(scale3d($tada-big, $tada-big, $tada-big) rotate3d(0, 0, 1, $tada-rotate));
+  }
+
+  40%, 60%, 80% {
+    @include transform(scale3d($tada-big, $tada-big, $tada-big) rotate3d(0, 0, 1, -1 * $tada-rotate));
+  }
+
+  100% {
+    @include transform(scale3d(1, 1, 1));
+  }
+}
+
 .main {
   position: relative;
   font-size: 1.5em;
@@ -16,6 +43,10 @@
     margin: 0 auto;
     font-size: 3.5em;
     margin-bottom: .5em;
+
+    &.flash {
+      @include animation(tada 1s linear);
+    }
   }
 
   &-url-prefix {
@@ -31,7 +62,7 @@
   @return lighten(saturate($primary-color-border, 15%), 10%);
 }
 
-@include keyframes(pulse) {
+@include keyframes(colorPulse) {
   from {
     background-color: $primary-color;
     border-color: $primary-color-border;
@@ -63,7 +94,7 @@
 
   cursor: pointer;
 
-  @include animation(pulse 2s ease);
+  @include animation(colorPulse 2s ease);
   @include animation-iteration-count(infinite);
 
   &.ng-hide-remove, &.ng-hide-add {
