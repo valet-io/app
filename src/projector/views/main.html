@@ -3,7 +3,7 @@
   <h3 class="main-amount-prefix">
     <total-verb count="campaign.count">Raised</total-verb>
   </h3>
-  <h1 class="main-amount label label-primary" flash="campaign.total">{{campaign.total | currency:'$':0}}</h1>
+  <h1 class="main-amount label label-primary" animate-change="campaign.total" change-class="flash">{{campaign.total | currency:'$':0}}</h1>
   <h2 class="main-url-prefix">Pledge Your Support At</h2>
   <h1 class="main-url" fittext>{{campaign.host}}</h1>
 </div>
