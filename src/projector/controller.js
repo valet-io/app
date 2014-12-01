@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope, campaign, screenfull, projectorConfig, $document) {
+module.exports = function ($scope, campaign, screenfull, projectorConfig, templates, $document) {
   $scope.campaign = campaign;
   this.config = projectorConfig;
   $scope.fullscreen = screenfull;
@@ -9,11 +9,13 @@ module.exports = function ($scope, campaign, screenfull, projectorConfig, $docum
       $scope.$digest();
     });
   }
+  this.templates = templates;
 };
 module.exports.$inject = [
   '$scope',
   'campaign',
   'screenfull',
   'projectorConfig',
+  'templates',
   '$document'
 ];

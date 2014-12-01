@@ -11,7 +11,8 @@ module.exports = function ($stateProvider) {
             donorCount: 6
           };
         },
-        campaign: subscribe
+        campaign: subscribe,
+        templates: templateUrls
       },
       views: {
         '@': {
@@ -22,15 +23,7 @@ module.exports = function ($stateProvider) {
       }
     })
     .state('projector.default', {
-      url: '/projector',
-      views: {
-        main: {
-          templateUrl: '/views/projector/main.html'
-        },
-        sidebar: {
-          templateUrl: '/views/projector/sidebar.html'
-        }
-      }
+      url: '/projector'
     });
 };
 module.exports.$inject = ['$stateProvider'];
@@ -49,3 +42,11 @@ function subscribe (campaign, config, $q) {
   });
 }
 subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
+
+function templateUrls (campaign) {
+  return angular.extend({
+    main: '/views/projector/main.html',
+    sidebar: '/views/projector/sidebar.html'
+  }, campaign.metadata.templates);
+}
+templateUrls.$inject = ['campaign'];

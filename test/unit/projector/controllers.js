@@ -16,7 +16,8 @@ module.exports = function () {
       $controller('ProjectorController', {
         $scope: scope,
         campaign: {},
-        projectorConfig: {}
+        projectorConfig: {},
+        templates: {}
       });
       expect(scope.fullscreen).to.equal(require('screenfull'));
     });
@@ -26,7 +27,8 @@ module.exports = function () {
       $controller('ProjectorController', {
         $scope: scope,
         campaign: campaign,
-        projectorConfig: {}
+        projectorConfig: {},
+        templates: {}
       });
       expect(scope.campaign).to.equal(campaign);
     });
@@ -36,10 +38,22 @@ module.exports = function () {
       var controller = $controller('ProjectorController', {
         $scope: scope,
         campaign: {},
-        projectorConfig: config
+        projectorConfig: config,
+        templates: {}
       });
       expect(controller.config).to.equal(config);
     }));
+
+    it('publishes the templates on the controller', function () {
+      var templates = {};
+      var controller = $controller('ProjectorController', {
+        $scope: scope,
+        campaign: {},
+        projectorConfig: {},
+        templates: templates
+      });
+      expect(controller.templates).to.equal(templates);
+    });
 
     it('triggers a digest on fullscreen change', function () {
       $controller('ProjectorController', {
@@ -50,7 +64,8 @@ module.exports = function () {
           raw: {
             fullscreenchange: 'fscevent' 
           }
-        }
+        },
+        templates: {}
       });
       sinon.stub(scope, '$digest');
       angular.element(document).triggerHandler('fscevent');
@@ -62,7 +77,8 @@ module.exports = function () {
         $scope: scope,
         campaign: {},
         projectorConfig: {},
-        screenfull: false
+        screenfull: false,
+        templates: {}
       });
       sinon.stub(scope, '$digest');
       angular.element(document).triggerHandler('fscevent');

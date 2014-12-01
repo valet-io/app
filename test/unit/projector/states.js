@@ -62,4 +62,32 @@ module.exports = function () {
     $timeout.flush();
   });
 
+  it('resolves the default templates', function () {
+    expect($injector.invoke($state.get('projector').resolve.templates, void 0, {
+      campaign: {
+        metadata: {}
+      }
+    }))
+    .to.deep.equal({
+      main: '/views/projector/main.html',
+      sidebar: '/views/projector/sidebar.html'
+    });
+  });
+
+  it('can override the default templates', function () {
+    expect($injector.invoke($state.get('projector').resolve.templates, void 0, {
+      campaign: {
+        metadata: {
+          templates: {
+            main: '/alternate/main.html'
+          }
+        }
+      }
+    }))
+    .to.deep.equal({
+      main: '/alternate/main.html',
+      sidebar: '/views/projector/sidebar.html'
+    });
+  });
+
 };
