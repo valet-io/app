@@ -19,7 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "angularfire": "~0.7.1",
+    "firebase": "~2.0.5",
     "ngFitText": "~2.4.0"
   }
 }
