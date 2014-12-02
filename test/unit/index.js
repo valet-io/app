@@ -22,5 +22,6 @@ describe('Projector', function () {
   describe('Controllers', require('./projector/controllers'));
   describe('Utilities', function () {
     describe('filter: reverse', require('./projector/reverse'));
+    describe('directive: donor', require('./projector/donor'));
   });
 });

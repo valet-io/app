@@ -8,10 +8,12 @@ module.exports = {
     './components/firebase/firebase.js',
     './components/angularfire/angularfire.js',
     './components/ngFitText/ng-FitText.js',
+    './src/**/*.html',
     'test/unit/index.js'
   ],
   preprocessors: {
-    'test/unit/**/*.js': ['browserify']
+    'test/unit/**/*.js': ['browserify'],
+    '**/*.html': ['html2js']
   },
   reporters: ['progress', 'coverage'],
   browserify: {

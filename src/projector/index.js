@@ -9,6 +9,7 @@ require('angular')
   .value('screenfull', require('screenfull'))
   .controller('ProjectorController', require('./controller'))
   .filter('reverse', require('./reverse'))
+  .directive('donor', require('./donor'))
   .config(require('./states'))
   .config(allowAssets);
 
