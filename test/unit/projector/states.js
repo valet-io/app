@@ -90,4 +90,30 @@ module.exports = function () {
     });
   });
 
+  it('can handle a css string', function () {
+    campaign.metadata = {
+      css: {
+        projector: 'styles'
+      }
+    };
+    $injector.invoke($state.get('projector').resolve.css, void 0, {
+      campaign: campaign
+    });
+    expect(campaign.metadata.css.projector).to.equal('styles');
+  });
+
+  it('can handle a css url', function () {
+    campaign.metadata = {
+      css: {
+        projector: 'http://assets.valet.io/styles.css'
+      }
+    };
+    $injector.get('$templateCache').put('http://assets.valet.io/styles.css', 'remoteStyles');
+    $injector.invoke($state.get('projector').resolve.css, void 0, {
+      campaign: campaign
+    });
+    $timeout.flush();
+    expect(campaign.metadata.css.projector).to.equal('remoteStyles');
+  });
+
 };

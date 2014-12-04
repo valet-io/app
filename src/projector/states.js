@@ -1,5 +1,7 @@
 'use strict';
 
+var isUrl = require('is-url');
+
 module.exports = function ($stateProvider) {
   $stateProvider
     .state('projector', {
@@ -12,7 +14,8 @@ module.exports = function ($stateProvider) {
           };
         },
         campaign: subscribe,
-        templates: templateUrls
+        templates: templateUrls,
+        css: getCss
       },
       views: {
         '@': {
@@ -50,3 +53,14 @@ function templateUrls (campaign) {
   }, campaign.metadata.templates);
 }
 templateUrls.$inject = ['campaign'];
+
+function getCss (campaign, $templateRequest) {
+  var css = campaign.metadata.css;
+  if (css && isUrl(css.projector)) {
+    return $templateRequest(css.projector)
+      .then(function (styles) {
+        return (css.projector = styles);
+      });
+  }
+}
+getCss.$inject = ['campaign', '$templateRequest'];
