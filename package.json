@@ -1,6 +1,6 @@
 {
   "name": "valet-app",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "description": "Valet.io app for administering campaigns and displaying them on a projector",
   "main": "./src",
