@@ -1,6 +1,6 @@
 <a class="go-fullscreen" ng-show="fullscreen && !fullscreen.isFullscreen" ng-click="fullscreen.request()">Go Full Screen</a>
 <style>{{campaign.metadata.css.projector}}</style>
 <div class="projection">
-  <div class="main container" ng-include="projector.templates.main"></div>
-  <div class="sidebar" ng-include="projector.templates.sidebar"></div>
+  <div class="main container" ng-include="projector.templates.main" ng-if="projector.templates.main"></div>
+  <div class="sidebar" ng-include="projector.templates.sidebar" ng-if="projector.templates.sidebar"></div>
 </div>
