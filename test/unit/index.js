@@ -23,5 +23,6 @@ describe('Projector', function () {
   describe('Utilities', function () {
     describe('filter: reverse', require('./projector/reverse'));
     describe('directive: donor', require('./projector/donor'));
+    describe('filter: round', require('./projector/round'));
   });
 });
