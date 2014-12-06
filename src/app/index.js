@@ -9,6 +9,8 @@ angular.module('config', [])
 angular
   .module('ValetApp', [
     'config',
+    'ui.router',
+    require('angular-router-exception-handler'),
     'ngAnimate',
     require('angular-loading'),
     require('convex'),
