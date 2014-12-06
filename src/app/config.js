@@ -10,3 +10,10 @@ module.exports = {
     api: env.valet__api
   }
 };
+
+/* istanbul ignore next */
+if (env.sentry__dsn) {
+  module.exports.sentry = {
+    dsn: env.sentry__dsn
+  };
+} 

@@ -6,20 +6,27 @@ var config  = require('./config');
 angular.module('config', [])
   .constant('config', config);
 
+var requires = [
+  'config',
+  'ui.router',
+  require('angular-router-exception-handler'),
+  'ngAnimate',
+  require('angular-loading'),
+  require('convex'),
+  require('convex-firebase'),
+  require('valet-io-pledge-models'),
+  require('valet-io-directives'),
+  require('../campaign'),
+  require('../projector')
+];
+
+/* istanbul ignore next */
+if (config.sentry) {
+  requires.push('ngRaven');
+}
+
 angular
-  .module('ValetApp', [
-    'config',
-    'ui.router',
-    require('angular-router-exception-handler'),
-    'ngAnimate',
-    require('angular-loading'),
-    require('convex'),
-    require('convex-firebase'),
-    require('valet-io-pledge-models'),
-    require('valet-io-directives'),
-    require('../campaign'),
-    require('../projector')
-  ])
+  .module('ValetApp', requires)
   .controller('AppController', require('./controller'))
   .config(provideStripe)
   .config(configure);
@@ -37,5 +44,10 @@ function provideStripe ($provide) {
   $provide.value('stripe', {});
 }
 provideStripe.$inject = ['$provide'];
+
+/* istanbul ignore next */
+if (config.sentry) {
+  angular.module('ngRaven').constant('RavenConfig', config.sentry);
+}
 
 module.exports = 'ValetApp';
