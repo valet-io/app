@@ -9,19 +9,17 @@
       <td>{{campaign.count | number}}</td>
     </tr>
   </table>
-
+  <input type="text" ng-model="query.donor.name" placeholder="Search by name" />
   <table class="pledges">
     <tr>
       <th>Name</th>
       <th>Amount</th>
-      <th>Phone</th>
       <th>Anonymous</th>
       <th>Timestamp</th>
     </tr>
-    <tr ng-repeat="pledge in campaign.pledges | reverse">
+    <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
       <td>{{pledge.donor.name}}</td>
       <td>{{pledge.amount | currency:'$':0}}</td>
-      <td>{{pledge.donor.phone}}</td>
       <td>{{pledge.anonymous}}</td>
       <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
     </tr>
