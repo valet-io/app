@@ -11,11 +11,17 @@
 @import 'modules/sidebar';
 
 .pledges-dashboard {
-  font-size: .5em;
+  font-size: .75em;
   font-family: helvetica, sans-serif;
 
+  margin: 2em;
+
   .pledges, .summary-statistics {
-    margin: 1rem;
+    margin: 1em 0;
+  }
+
+  input {
+    width: 25%;
   }
 
   .summary-statistics {
