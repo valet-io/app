@@ -9,3 +9,25 @@
 
 @import 'modules/main';
 @import 'modules/sidebar';
+
+.pledges-dashboard {
+  font-size: .5em;
+  font-family: helvetica, sans-serif;
+
+  .pledges, .summary-statistics {
+    margin: 1rem;
+  }
+
+  .summary-statistics {
+    font-size: 1.5em;
+  }
+
+  th, td {
+    padding: 1em;
+    border: 1px solid #eee;
+  }
+  th {
+    text-align: left;
+    padding-right: 2em;
+  }
+}

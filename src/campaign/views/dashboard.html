@@ -1,0 +1,30 @@
+<div class="pledges-dashboard">
+  <table class="summary-statistics">
+    <tr>
+      <th>Total</th>
+      <th>Count</th>
+    </tr>
+    <tr>
+      <td>{{campaign.$$aggregates.total | currency:'$':0}}</td>
+      <td>{{campaign.count | number}}</td>
+    </tr>
+  </table>
+
+  <table class="pledges">
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Phone</th>
+      <th>Anonymous</th>
+      <th>Timestamp</th>
+    </tr>
+    <tr ng-repeat="pledge in campaign.pledges | reverse">
+      <td>{{pledge.donor.name}}</td>
+      <td>{{pledge.amount | currency:'$':0}}</td>
+      <td>{{pledge.donor.phone}}</td>
+      <td>{{pledge.anonymous}}</td>
+      <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
+    </tr>
+  </table>
+</div>
+
