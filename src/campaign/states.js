@@ -3,12 +3,13 @@
 
 module.exports = function ($stateProvider) {
   $stateProvider
-    .state('campaign', {
+    .state('campaigns', {
       abstract: true,
       template: '<div ui-view></div>',
       url: '/campaigns'
     })
-    .state('campaign.single', {
+    .state('campaign', {
+      parent: 'campaigns',
       abstract: true,
       template: '<div ui-view></div>',
       url: '/:id',

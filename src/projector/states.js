@@ -5,7 +5,7 @@ var isUrl = require('is-url');
 module.exports = function ($stateProvider) {
   $stateProvider
     .state('projector', {
-      parent: 'campaign.single',
+      parent: 'campaign',
       abstract: true,
       resolve: {
         projectorConfig: function () {

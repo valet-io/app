@@ -19,7 +19,7 @@ module.exports = function () {
         .respond(200, {
           id: 'theId'
         });
-      $injector.get('$resolve').resolve($state.get('campaign.single').resolve, {
+      $injector.get('$resolve').resolve($state.get('campaign').resolve, {
         $stateParams: {
           id: 'theId'
         }
