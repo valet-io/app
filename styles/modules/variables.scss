@@ -3,6 +3,9 @@ $font: 'tablet-gothic', sans-serif;
 $primary-color: #4A90E2;
 $primary-color-border: #3684DE;
 
+$error-color: #F62449;
+$error-color-border: darken($error-color, 10%); 
+
 // Breakpoints
 $medium-width: 768px;
 $large-width: 1024px;

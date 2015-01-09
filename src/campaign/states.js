@@ -12,7 +12,7 @@ module.exports = function ($stateProvider) {
       parent: 'campaigns',
       abstract: true,
       template: '<div ui-view></div>',
-      url: '/:id',
+      url: '/:id?{test:bool}',
       controller: 'CampaignController',
       resolve: {
         campaign: campaign
@@ -28,10 +28,11 @@ module.exports = function ($stateProvider) {
 };
 module.exports.$inject = ['$stateProvider'];
 
-function campaign (Campaign, $stateParams) {
+function campaign (Campaign, $stateParams, live) {
+  live.enabled(!$stateParams.test);
   return new Campaign({id: $stateParams.id}).$fetch();
 }
-campaign.$inject = ['Campaign', '$stateParams'];
+campaign.$inject = ['Campaign', '$stateParams', 'live'];
 
 function subscribe (campaign, $q) {
   return $q.all([
