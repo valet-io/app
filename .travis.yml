@@ -28,11 +28,6 @@ deploy:
     repo: valet-io/app
     tags: true 
     all_branches: true
-after_deploy: sh ./scripts/deliver.sh
 notifications:
   slack:
     secure: T1/4MdXdzio7tOqsGaQVGpJ5fVHcx/Y9BzotsnwpFwbIfpkNZMsu1nGlwU6QC7Of5y/BONeJRvbLrGCyAoknwvKTAVfZlsYta1FbYqfBm9naZ0GmyDCt9riftJK58NrkJI49wYsmBueFo28WJFOXnuWDKIcEoOY7COqKuuL/S2c=
-env:
-  global:
-  - TRACKER_PROJECT_ID=1109182
-  - secure: Ln0UQWiKVKT6iWETu01cGWAs8hJwGPI325r4JRo12JFZtazKUmmPiwWpVQy0N4N2HnH82mtKvY/uALzNudPleF/xwc8WaJBStQIjD2UT2FBSR8je9CxB3wSi3oEsDL2/58bVXhUsPklZTQkPzbnEyUYwSw2FGTgxgqjOFs4r5Pk=
