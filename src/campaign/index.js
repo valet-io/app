@@ -2,7 +2,8 @@
 
 require('angular')
   .module('Campaign', [
-    'ui.router'
+    'ui.router',
+    require('angular-live-or-test')
   ])
   .controller('CampaignController', require('./controllers').Campaign)
   .config(require('./states'));
