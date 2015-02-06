@@ -30,7 +30,9 @@ module.exports.$inject = ['$stateProvider'];
 
 function campaign (Campaign, $stateParams, live) {
   live.enabled(!$stateParams.test);
-  return new Campaign({id: $stateParams.id}).$fetch();
+  return new Campaign({id: $stateParams.id}).$fetch({
+    expand: ['domain']
+  });
 }
 campaign.$inject = ['Campaign', '$stateParams', 'live'];
 

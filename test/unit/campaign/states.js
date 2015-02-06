@@ -1,6 +1,7 @@
 'use strict';
 
 var angular = require('angular');
+var util    = require('../../util');
 
 module.exports = function () {
   var $injector, config, $state, $httpBackend;
@@ -13,11 +14,15 @@ module.exports = function () {
 
   describe('single', function () {
 
-    it('resolves the campaign by id', angular.mock.inject(function ($injector) {
+    it('resolves the campaign by id with the domain', angular.mock.inject(function ($injector) {
       $httpBackend
-        .expectGET(config.valet.api + '/campaigns/theId')
+        .expectGET(util.encodeBrackets(config.valet.api + '/campaigns/theId?expand[0]=domain'))
         .respond(200, {
-          id: 'theId'
+          id: 'theId',
+          domain_id: 'theDomainId',
+          domain: {
+            id: 'theDomainId'
+          }
         });
       $injector.get('$resolve').resolve($state.get('campaign').resolve, {
         $stateParams: {
