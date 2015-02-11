@@ -18,7 +18,7 @@ module.exports = function () {
       }
     };
     scope.$digest();
-    expect(element.text()).to.contain('Ben');
+    expect(element.text().trim()).to.equal('Ben');
   });
 
   it('handles an anonymous pledge', function () {
@@ -29,7 +29,7 @@ module.exports = function () {
       }
     };
     scope.$digest();
-    expect(element.text()).to.contain('Anonymous');
+    expect(element.text().trim()).to.equal('Anonymous');
     expect(element.text()).to.not.contain('Ben');
   });
 
