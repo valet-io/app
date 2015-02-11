@@ -11,6 +11,7 @@ require('angular')
   .filter('reverse', require('./reverse'))
   .filter('round', require('./round'))
   .directive('donor', require('./donor'))
+  .directive('domain', require('./domain'))
   .config(require('./states'))
   .config(allowAssets);
 
