@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "firebase": "~2.0.5",
-    "ngFitText": "~2.4.0",
+    "ngFitText": "~3.3.0",
     "raven-js": "~1.1.16"
   }
 }

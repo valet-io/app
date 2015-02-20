@@ -1,14 +1,22 @@
 'use strict';
 
-module.exports = function (live) {
+module.exports = function () {
   return {
     scope: {
-      name: '='
+      baseName: '=name'
     },
+    bindToController: true,
+    controller: DomainController,
+    controllerAs: 'domain',
     templateUrl: '/views/projector/domain.html',
-    link: function ($scope) {
-      $scope.live = live;
-    }
   };
 };
-module.exports.$inject = ['live'];
+
+function DomainController (live) {
+  Object.defineProperty(this, 'name', {
+    get: function () {
+      return (!live.enabled() ? 'test.' : '') + this.baseName;
+    }
+  });
+}
+DomainController.$inject = ['live'];

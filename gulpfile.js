@@ -21,7 +21,7 @@ tasks.use('vendor', [
   './node_modules/angular-ui-router/release/angular-ui-router.js',
   './components/firebase/firebase.js',
   './components/angularfire/angularfire.js',
-  './components/ngFitText/ng-FitText.js',
+  './components/ngFitText/src/ng-FitText.js',
   './components/raven-js/dist/raven.js',
   './components/raven-js/plugins/angular.js'
 ], './build/scripts');
