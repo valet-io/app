@@ -20,7 +20,7 @@ module.exports = function ($stateProvider) {
     })
     .state('campaign.dashboard', {
       templateUrl: '/views/campaign/dashboard.html',
-      url: '/dashboard',
+      url: '',
       resolve: {
         campaign: subscribe
       }

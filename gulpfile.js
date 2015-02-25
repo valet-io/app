@@ -40,11 +40,12 @@ tasks.use('watch', {
   './src/**/views/*.html': 'templates',
   './src/index.html': 'index',
   './styles/**/*.scss': 'styles',
-  './src/index.js': 'bundle'
+  './src/index.js': 'bundle',
+  './images/**/*': 'images'
 }, void 0,
 {
   build: './build',
-  prerequisites: ['templates', 'styles', 'vendor', 'index']
+  prerequisites: ['templates', 'styles', 'vendor', 'index', 'images']
 });
 
 gulp.task('unit', function () {
@@ -58,8 +59,13 @@ gulp.task('unit', function () {
     });
 });
 
+gulp.task('images', function () {
+  return gulp.src('images/**/*')
+    .pipe(gulp.dest('build/images'));
+});
+
 gulp.task('build', ['clean'], function (done) {
-  sequence(['bundle', 'vendor', 'templates', 'styles'], 'index', done);
+  sequence(['bundle', 'vendor', 'templates', 'styles', 'images'], 'index', done);
 });
 
 gulp.task('serve', ['watch', 'server']);
