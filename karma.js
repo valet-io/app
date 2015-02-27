@@ -18,7 +18,7 @@ module.exports = {
   reporters: ['progress', 'coverage'],
   browserify: {
     debug: true,
-    transform: ['browserify-istanbul', 'browserify-shim']
+    transform: ['babelify', 'browserify-istanbul', 'browserify-shim']
   },
   coverageReporter: {
     reporters: [
