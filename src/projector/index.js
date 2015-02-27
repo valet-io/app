@@ -1,26 +1,35 @@
 'use strict';
 
-require('angular')
-  .module('Projector', [
-    'ui.router',
-    'ngFitText',
-    require('angular-animate-change')
-  ])
-  .value('screenfull', require('screenfull'))
-  .controller('ProjectorController', require('./controller'))
-  .filter('reverse', require('./reverse'))
-  .filter('round', require('./round'))
-  .directive('donor', require('./donor'))
-  .directive('domain', require('./domain'))
-  .config(require('./states'))
-  .config(allowAssets);
+import angular from 'angular';
+import router from 'angular-ui-router';
+import round from 'angular-round';
+import animateChange from 'angular-animate-change';
+import screenfull from 'screenfull';
+import ProjectorController from './controller';
+import reverse from './reverse';
+import donor from './donor';
+import domain from './domain';
+import states from './states';
 
+export default angular.module('valetApp.projector', [
+  router,
+  round,
+  'ngFitText',
+  animateChange
+])
+.value('screenfull', screenfull)
+.controller('ProjectorController', ProjectorController)
+.filter('reverse', reverse)
+.directive('donor', donor)
+.directive('domain', domain)
+.config(states)
+.config(allowAssets)
+.name;
+
+allowAssets.$inject = ['$sceDelegateProvider'];
 function allowAssets ($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://assets.valet.io/**'
   ]);
 }
-allowAssets.$inject = ['$sceDelegateProvider'];
-
-module.exports = 'Projector';

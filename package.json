@@ -22,6 +22,7 @@
     "angular-animate-change": "~1.0.1",
     "angular-live-or-test": "~1.0.1",
     "angular-loading": "~1.1.0",
+    "angular-round": "~1.0.0",
     "angular-router-exception-handler": "~1.0.0",
     "angular-ui-router": "bendrucker/ui-router#3d156d6ae898367ae7625780fbc2d48dbe6989e9",
     "babelify": "~5.0.3",

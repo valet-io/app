@@ -1,10 +1,10 @@
 'use strict';
 
-var angular = require('angular');
+import angular from 'angular';
 
-module.exports = function () {
+export default function () {
   return function (input) {
     if (!angular.isArray(input)) return input;
     return input.slice().reverse();
   };
-};
+}

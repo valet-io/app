@@ -1,8 +1,10 @@
 'use strict';
 
-var isUrl = require('is-url');
+import angular from 'angular';
+import isUrl from 'is-url';
 
-module.exports = function ($stateProvider) {
+states.$inject = ['$stateProvider'];
+function states ($stateProvider) {
   $stateProvider
     .state('projector', {
       parent: 'campaign',
@@ -28,9 +30,11 @@ module.exports = function ($stateProvider) {
     .state('projector.default', {
       url: '/projector'
     });
-};
-module.exports.$inject = ['$stateProvider'];
+}
 
+export default states;
+
+subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
 function subscribe (campaign, config, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
@@ -44,16 +48,16 @@ function subscribe (campaign, config, $q) {
     return campaign;
   });
 }
-subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
 
+templateUrls.$inject = ['campaign'];
 function templateUrls (campaign) {
   return angular.extend({
     main: '/views/projector/main.html',
     sidebar: '/views/projector/sidebar.html'
   }, campaign.metadata.templates);
 }
-templateUrls.$inject = ['campaign'];
 
+getCss.$inject = ['campaign', '$templateRequest'];
 function getCss (campaign, $templateRequest) {
   var css = campaign.metadata.css;
   if (css && isUrl(css.projector)) {
@@ -63,4 +67,3 @@ function getCss (campaign, $templateRequest) {
       });
   }
 }
-getCss.$inject = ['campaign', '$templateRequest'];
