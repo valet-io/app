@@ -1,11 +1,21 @@
 'use strict';
 
-require('angular')
-  .module('Campaign', [
-    'ui.router',
-    require('angular-live-or-test')
-  ])
-  .controller('CampaignController', require('./controllers').Campaign)
-  .config(require('./states'));
+import angular from 'angular';
+import router from 'angular-ui-router';
+import convex from 'convex';
+import convexFirebase from 'convex-firebase';
+import models from 'valet-io-pledge-models';
+import live from 'angular-live-or-test';
+import states from './states';
+import CampaignController from './controller';
 
-module.exports = 'Campaign';
+export default angular.module('valetApp.campaign', [
+  router,
+  convex,
+  convexFirebase,
+  models,
+  live,
+])
+.controller('CampaignController', CampaignController)
+.config(states)
+.name;
