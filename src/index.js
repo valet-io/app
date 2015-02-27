@@ -24,6 +24,7 @@ export default angular.module('valetApp', [
 .constant('config', config)
 .config(html5Mode)
 .config(configureConvex)
+.config(stripe)
 .name;
 
 html5Mode.$inject = ['$locationProvider'];
@@ -35,4 +36,9 @@ configureConvex.$inject = ['convexConfig', 'config'];
 function configureConvex (convexConfig, config) {
   convexConfig.base = config.valet.api;
   convexConfig.firebase = config.firebase.endpoint;
+}
+
+stripe.$inject = ['$provide'];
+function stripe ($provide) {
+  $provide.value('stripe', {});
 }
