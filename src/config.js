@@ -1,6 +1,6 @@
 'use strict';
 
-var env = require('env');
+var env = window.__env;
 
 module.exports = {
   firebase: {

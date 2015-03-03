@@ -1,6 +1,7 @@
 'use strict';
 
 import angular from 'angular';
+import animate from 'angular-animate';
 import router from 'angular-ui-router';
 import convex from 'convex';
 import convexFirebase from 'convex-firebase';
@@ -12,6 +13,7 @@ import projector from './projector';
 import config from './config';
 
 export default angular.module('valetApp', [
+  animate,
   router,
   convex,
   convexFirebase,

@@ -3,6 +3,7 @@
 import angular from 'angular';
 import router from 'angular-ui-router';
 import round from 'angular-round';
+import fittext from 'ngFitText';
 import animateChange from 'angular-animate-change';
 import screenfull from 'screenfull';
 import ProjectorController from './controller';
@@ -14,7 +15,7 @@ import states from './states';
 export default angular.module('valetApp.projector', [
   router,
   round,
-  'ngFitText',
+  fittext,
   animateChange
 ])
 .value('screenfull', screenfull)
