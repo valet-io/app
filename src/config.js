@@ -1,19 +1,16 @@
 'use strict';
 
-var env = window.__env;
+import parse from 'confidential-divshot';
 
-module.exports = {
+export default parse({
   firebase: {
-    endpoint: env.firebase__endpoint
+    endpoint: {
+      property: 'firebase__endpoint'
+    }
   },
   valet: {
-    api: env.valet__api
+    api: {
+      property: 'valet__api'
+    }
   }
-};
-
-/* istanbul ignore next */
-if (env.sentry__dsn) {
-  module.exports.sentry = {
-    dsn: env.sentry__dsn
-  };
-} 
+});
