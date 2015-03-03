@@ -17,13 +17,14 @@ tasks.use('templates', './src/**/views/*.html', 'build/views');
 tasks.use('styles', './styles/main.scss', './build/styles');
 tasks.use('bundle', './src/index.js', './build/scripts', {
   templates: './src/**/views/*.html',
-  module: 'ValetApp'
+  module: 'valetApp'
 });
 tasks.use('index', './src/index.html', './build');
 tasks.use('server', void 0, void 0, {
   localEnv: {
     'firebase__endpoint': 'https://valet-io-events-dev.firebaseio.com',
-    'valet__api': 'http://valet-io-pledge-dev.herokuapp.com'
+    'valet__api': 'http://valet-io-pledge-dev.herokuapp.com',
+    'sentry__dsn': 'https://0759fbf95a4d40019f9451e963351d18@app.getsentry.com/38955'
   }
 });
 tasks.use('watch', {

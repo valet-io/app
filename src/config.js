@@ -12,5 +12,10 @@ export default parse({
     api: {
       property: 'valet__api'
     }
+  },
+  sentry: {
+    dsn: {
+      property: 'sentry__dsn'
+    }
   }
 });

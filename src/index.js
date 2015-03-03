@@ -1,5 +1,6 @@
 'use strict';
 
+import raven from './raven';
 import angular from 'angular';
 import animate from 'angular-animate';
 import router from 'angular-ui-router';
@@ -13,6 +14,7 @@ import projector from './projector';
 import config from './config';
 
 export default angular.module('valetApp', [
+  raven,
   animate,
   router,
   convex,
