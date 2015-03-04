@@ -1,12 +1,9 @@
 'use strict';
 
-var donor = require('../../../src/projector/donor')();
-
 module.exports = function () {
   
   var scope, element;
   beforeEach(angular.mock.inject(function ($injector) {
-    $injector.get('$templateCache').put(donor.templateUrl, __html__['src/projector/views/donor.html']);
     scope   = $injector.get('$rootScope').$new();
     element = $injector.get('$compile')('<donor pledge="pledge" />')(scope);
   }));

@@ -24,6 +24,5 @@ describe('Projector', function () {
     describe('filter: reverse', require('./projector/reverse'));
     describe('directive: donor', require('./projector/donor'));
     describe('directive: domain', require('./projector/domain'));
-    describe('filter: round', require('./projector/round'));
   });
 });

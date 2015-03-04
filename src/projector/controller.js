@@ -5,10 +5,9 @@ ProjectorController.$inject = [
   'campaign',
   'screenfull',
   'projectorConfig',
-  'templates',
   '$document'
 ];
-function ProjectorController ($scope, campaign, screenfull, projectorConfig, templates, $document) {
+function ProjectorController ($scope, campaign, screenfull, projectorConfig, $document) {
   $scope.campaign = campaign;
   this.config = projectorConfig;
   $scope.fullscreen = screenfull;
@@ -17,6 +16,5 @@ function ProjectorController ($scope, campaign, screenfull, projectorConfig, tem
       $scope.$digest();
     });
   }
-  this.templates = templates;
 }
 export default ProjectorController;

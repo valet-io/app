@@ -1,5 +1,7 @@
 'use strict';
 
+import template from './views/domain.html';
+
 export default function () {
   return {
     scope: {
@@ -8,7 +10,7 @@ export default function () {
     bindToController: true,
     controller: DomainController,
     controllerAs: 'domain',
-    templateUrl: '/views/projector/domain.html',
+    template
   };
 }
 

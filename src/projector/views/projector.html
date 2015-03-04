@@ -4,6 +4,6 @@
 </test-badge>
 <style>{{campaign.metadata.css.projector}}</style>
 <div class="projection">
-  <div class="main container" ng-include="projector.templates.main" ng-if="projector.templates.main"></div>
-  <div class="sidebar" ng-include="projector.templates.sidebar" ng-if="projector.templates.sidebar"></div>
+  <div class="main container" ui-view="main"></div>
+  <div class="sidebar" ui-view="sidebar"></div>
 </div>

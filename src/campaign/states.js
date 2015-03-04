@@ -1,5 +1,7 @@
 'use strict';
 
+import dashboard from './views/dashboard.html';
+
 states.$inject = ['$stateProvider'];
 function states ($stateProvider) {
   $stateProvider
@@ -19,7 +21,7 @@ function states ($stateProvider) {
       }
     })
     .state('campaign.dashboard', {
-      templateUrl: '/views/campaign/dashboard.html',
+      template: dashboard,
       url: '',
       resolve: {
         campaign: subscribe
