@@ -5,17 +5,17 @@ import parse from 'confidential-divshot';
 export default parse({
   firebase: {
     endpoint: {
-      property: 'firebase__endpoint'
+      key: 'firebase__endpoint'
     }
   },
   valet: {
     api: {
-      property: 'valet__api'
+      key: 'valet__api'
     }
   },
   sentry: {
     dsn: {
-      property: 'sentry__dsn'
+      key: 'sentry__dsn'
     }
   }
 });
