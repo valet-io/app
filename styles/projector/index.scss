@@ -1,0 +1,12 @@
+.projector {
+
+  &-content {
+    @include display(flex);
+    @extend .full-height;
+  }
+
+}
+
+@import 'fullscreen';
+@import 'main';
+@import 'sidebar';

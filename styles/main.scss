@@ -8,38 +8,6 @@
 @import 'modules/loading';
 @import 'modules/test';
 @import 'modules/topbar';
+@import 'modules/custom-elements';
 
-@import 'modules/main';
-@import 'modules/sidebar';
-
-.pledges-dashboard {
-  font-size: .75em;
-  font-family: helvetica, sans-serif;
-
-  margin: 2em;
-
-  .pledges, .summary-statistics {
-    margin: 1em 0;
-  }
-
-  input {
-    width: 25%;
-  }
-
-  .summary-statistics {
-    font-size: 1.5em;
-  }
-
-  th, td {
-    padding: 1em;
-    border: 1px solid #eee;
-  }
-  th {
-    text-align: left;
-    padding-right: 2em;
-  }
-}
-
-domain {
-  display: block;
-}
+@import 'projector/index';

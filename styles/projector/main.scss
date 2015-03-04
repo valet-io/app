@@ -1,0 +1,35 @@
+@import 'tada';
+
+.projector-main {
+  @include flex(2);
+  position: relative;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+
+  .amount-prefix {
+    margin-bottom: .5em;
+    font-weight: 300;
+    color: #444;
+  }
+
+  .amount {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 3.5em;
+    margin-bottom: .5em;
+
+    &.flash {
+      @include animation(tada 1s linear);
+    }
+  }
+
+  .url-prefix {
+    color: #444;
+  }
+
+  .url {
+    font-size: 3em;
+  }
+}

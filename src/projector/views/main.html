@@ -1,9 +1,7 @@
-<div class="main-body">
-  <h1><donor-count count="campaign.count"></donor-count></h1>
-  <h3 class="main-amount-prefix">
-    <total-verb count="campaign.count">Raised</total-verb>
-  </h3>
-  <h1 class="main-amount label label-primary" animate-change="campaign.total" change-class="flash">{{campaign.total | currency:'$':0}}</h1>
-  <h2 class="main-url-prefix">Pledge Your Support At</h2>
-  <domain name="campaign.domain.name"></domain>
-</div>
+<h1><donor-count count="campaign.count"></donor-count></h1>
+<h3 class="amount-prefix">
+  <total-verb count="campaign.count">Raised</total-verb>
+</h3>
+<h1 class="amount label label-primary" animate-change="campaign.total" change-class="flash">{{campaign.total | currency:'$':0}}</h1>
+<h2 class="url-prefix">Pledge Your Support At</h2>
+<domain name="campaign.domain.name"></domain>

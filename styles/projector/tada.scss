@@ -1,0 +1,26 @@
+@include keyframes(tada) {
+  $tada-scale: .025;
+  $tada-rotate: .5deg;
+  $tada-big: 1 * (1 + $tada-scale);
+  $tada-small: 1 * (1 - $tada-scale);
+
+  0% {
+    @include transform(scale3d(1, 1, 1));
+  }
+
+  10%, 20% {
+    @include transform(scale3d($tada-small, $tada-small, $tada-small) rotate3d(0, 0, 1, -1 * $tada-rotate));
+  }
+
+  30%, 50%, 70%, 90% {
+    @include transform(scale3d($tada-big, $tada-big, $tada-big) rotate3d(0, 0, 1, $tada-rotate));
+  }
+
+  40%, 60%, 80% {
+    @include transform(scale3d($tada-big, $tada-big, $tada-big) rotate3d(0, 0, 1, -1 * $tada-rotate));
+  }
+
+  100% {
+    @include transform(scale3d(1, 1, 1));
+  }
+}

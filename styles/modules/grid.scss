@@ -15,16 +15,3 @@ body {
 .full-height {
   min-height: 100%;
 }
-
-.projection {
-  @include display(flex);
-  @extend .full-height;
-}
-
-.main {
-  @include flex(2);
-}
-
-.sidebar {
-  @include flex(1);
-}

@@ -1,9 +1,14 @@
-<a class="go-fullscreen" ng-show="fullscreen && !fullscreen.isFullscreen" ng-click="fullscreen.request()">Go Full Screen</a>
-<test-badge>
-  <h2>Test</h2>
-</test-badge>
-<style>{{campaign.metadata.css.projector}}</style>
-<div class="projection">
-  <div class="main container" ui-view="main"></div>
-  <div class="sidebar" ui-view="sidebar"></div>
+<div class="projector">
+  <header class="projector-header">
+    <a class="projector-go-fullscreen" ng-show="fullscreen && !fullscreen.isFullscreen" ng-click="fullscreen.request()">
+      Go Full Screen
+    </a>
+    <test-badge>
+      <h2>Test</h2>
+    </test-badge>
+  </header>
+  <section class="projector-content">
+    <div class="projector-main container" ui-view="main"></div>
+    <div class="projector-sidebar" ui-view="sidebar"></div>
+  </section>
 </div>
