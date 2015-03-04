@@ -1,10 +1,10 @@
 body {
-  font-size: 16px;
+  font-size: 14px;
   @media #{$medium} {
-    font-size: 20px;
+    font-size: 16px;
   }
   @media #{$large} {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 

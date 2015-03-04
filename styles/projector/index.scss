@@ -1,5 +1,13 @@
 .projector {
 
+  font-size: 16px;
+  @media #{$medium} {
+    font-size: 20px;
+  }
+  @media #{$large} {
+    font-size: 24px;
+  }
+
   &-content {
     @include display(flex);
     @extend .full-height;
