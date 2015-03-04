@@ -10,8 +10,7 @@ module.exports = {
   },
   reporters: ['progress', 'coverage'],
   browserify: {
-    debug: true,
-    transform: ['babelify', 'partialify', 'browserify-shim']
+    debug: true
   },
   coverageReporter: {
     reporters: [
