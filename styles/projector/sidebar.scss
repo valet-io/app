@@ -9,12 +9,12 @@ $sidebar-border: 2px solid darken($sidebar-background-color, 5%);
   border-left: $sidebar-border;
 
   &-header {
-    @extend .container;
+    padding: 1em;
     border-bottom: $sidebar-border;
   }
 
   &-body {
-    @extend .container;
+    padding: 1em;
   }
 
   img {
