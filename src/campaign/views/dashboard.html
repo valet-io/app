@@ -1,32 +1,49 @@
-<header class="topbar">
+<header class="app-header">
   <img class="logo" src="/images/valet-io-logo.svg" alt="Valet.io Logo" />
 </header>
-<div class="content">
-  <div class="pledges-dashboard">
-    <table class="summary-statistics">
-      <tr>
-        <th>Total</th>
-        <th>Count</th>
-      </tr>
-      <tr>
-        <td>{{campaign.$$aggregates.total | currency:'$':0}}</td>
-        <td>{{campaign.count | number}}</td>
-      </tr>
-    </table>
-    <input type="text" ng-model="query.donor.name" placeholder="Search by name" />
-    <table class="pledges">
-      <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Anonymous</th>
-        <th>Timestamp</th>
-      </tr>
-      <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
-        <td>{{pledge.donor.name}}</td>
-        <td>{{pledge.amount | currency:'$':0}}</td>
-        <td>{{pledge.anonymous}}</td>
-        <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
-      </tr>
-    </table>
-  </div>
-</div>
+<main>
+  <header class="main-header">
+    <div class="content">
+      <h1>{{campaign.name}}</h1>
+    </div>
+  </header>
+  <div class="content">
+    <section class="panel panel-split panel-summary">
+      <div class="panel-content">
+        <h2>{{campaign.$$aggregates.total | currency:'$':0}}</h2>
+        <h4>Pledged</h4>
+      </div>
+      <div class="panel-content">
+        <h2>{{campaign.count | number}}</h2>
+        <h4>Pledges</h4>
+      </div>
+    </section>
+<!--     <div>
+      <table class="summary-statistics">
+        <tr>
+          <th>Total</th>
+          <th>Count</th>
+        </tr>
+        <tr>
+          <td>{{campaign.$$aggregates.total | currency:'$':0}}</td>
+          <td>{{campaign.count | number}}</td>
+        </tr>
+      </table>
+      <input type="text" ng-model="query.donor.name" placeholder="Search by name" />
+      <table class="pledges">
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Anonymous</th>
+          <th>Timestamp</th>
+        </tr>
+        <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
+          <td>{{pledge.donor.name}}</td>
+          <td>{{pledge.amount | currency:'$':0}}</td>
+          <td>{{pledge.anonymous}}</td>
+          <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
+        </tr>
+      </table>
+    </div>
+ -->  </div>
+</main>

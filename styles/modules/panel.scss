@@ -1,0 +1,42 @@
+.panel {
+
+  margin: .5em 0;  
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px #ddd;
+
+  &-split {
+    @include display(flex);
+    .panel-content {
+      width: 100%;
+
+      &:not(:last-child) {
+        border-right: #F0F0F0 .1em solid;
+      }
+    }
+  }
+
+  &-content {
+    @include container;
+  }
+
+  &-summary {
+    text-align: center;
+  }
+
+  h2 {
+    font: {
+      size: 2em;
+      weight: 700;
+    }
+    color: #323A45;
+  }
+
+  h4 {
+    font: {
+      size: .8em;
+    }
+    color: #ADADAD;
+    text-transform: uppercase;
+  }
+}
