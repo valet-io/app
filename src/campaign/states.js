@@ -1,7 +1,9 @@
 'use strict';
 
+import dashboard from './views/dashboard.html';
 
-module.exports = function ($stateProvider) {
+states.$inject = ['$stateProvider'];
+function states ($stateProvider) {
   $stateProvider
     .state('campaigns', {
       abstract: true,
@@ -19,23 +21,23 @@ module.exports = function ($stateProvider) {
       }
     })
     .state('campaign.dashboard', {
-      templateUrl: '/views/campaign/dashboard.html',
+      template: dashboard,
       url: '',
       resolve: {
         campaign: subscribe
       }
     });
-};
-module.exports.$inject = ['$stateProvider'];
+}
 
+campaign.$inject = ['Campaign', '$stateParams', 'live'];
 function campaign (Campaign, $stateParams, live) {
   live.enabled(!$stateParams.test);
   return new Campaign({id: $stateParams.id}).$fetch({
     expand: ['domain']
   });
 }
-campaign.$inject = ['Campaign', '$stateParams', 'live'];
 
+subscribe.$inject = ['campaign', '$q'];
 function subscribe (campaign, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
@@ -45,4 +47,5 @@ function subscribe (campaign, $q) {
     return campaign;
   });
 }
-subscribe.$inject = ['campaign', '$q'];
+
+export default states;

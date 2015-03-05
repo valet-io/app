@@ -1,36 +1,42 @@
 'use strict';
 
-var isUrl = require('is-url');
+import projector from './views/projector.html';
+import main from './views/main.html';
+import sidebar from './views/sidebar.html';
 
-module.exports = function ($stateProvider) {
+states.$inject = ['$stateProvider'];
+function states ($stateProvider) {
   $stateProvider
     .state('projector', {
       parent: 'campaign',
-      abstract: true,
+      url: '/projector',
       resolve: {
         projectorConfig: function () {
           return {
             donorCount: 6
           };
         },
-        campaign: subscribe,
-        templates: templateUrls,
-        css: getCss
+        campaign: subscribe
       },
       views: {
         '@': {
-          templateUrl: '/views/projector/index.html',
+          template: projector,
           controller: 'ProjectorController',
           controllerAs: 'projector'
+        },
+        'main@projector': {
+          template: main
+        },
+        'sidebar@projector': {
+          template: sidebar
         }
       }
-    })
-    .state('projector.default', {
-      url: '/projector'
     });
-};
-module.exports.$inject = ['$stateProvider'];
+}
 
+export default states;
+
+subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
 function subscribe (campaign, config, $q) {
   return $q.all([
     campaign.$subscribe(['aggregates', 'options'], true),
@@ -44,23 +50,3 @@ function subscribe (campaign, config, $q) {
     return campaign;
   });
 }
-subscribe.$inject = ['campaign', 'projectorConfig', '$q'];
-
-function templateUrls (campaign) {
-  return angular.extend({
-    main: '/views/projector/main.html',
-    sidebar: '/views/projector/sidebar.html'
-  }, campaign.metadata.templates);
-}
-templateUrls.$inject = ['campaign'];
-
-function getCss (campaign, $templateRequest) {
-  var css = campaign.metadata.css;
-  if (css && isUrl(css.projector)) {
-    return $templateRequest(css.projector)
-      .then(function (styles) {
-        return (css.projector = styles);
-      });
-  }
-}
-getCss.$inject = ['campaign', '$templateRequest'];

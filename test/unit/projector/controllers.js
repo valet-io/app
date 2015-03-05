@@ -44,17 +44,6 @@ module.exports = function () {
       expect(controller.config).to.equal(config);
     }));
 
-    it('publishes the templates on the controller', function () {
-      var templates = {};
-      var controller = $controller('ProjectorController', {
-        $scope: scope,
-        campaign: {},
-        projectorConfig: {},
-        templates: templates
-      });
-      expect(controller.templates).to.equal(templates);
-    });
-
     it('triggers a digest on fullscreen change', function () {
       $controller('ProjectorController', {
         $scope: scope,

@@ -1,6 +1,13 @@
 'use strict';
 
-module.exports = function ($scope, campaign, screenfull, projectorConfig, templates, $document) {
+ProjectorController.$inject = [
+  '$scope',
+  'campaign',
+  'screenfull',
+  'projectorConfig',
+  '$document'
+];
+function ProjectorController ($scope, campaign, screenfull, projectorConfig, $document) {
   $scope.campaign = campaign;
   this.config = projectorConfig;
   $scope.fullscreen = screenfull;
@@ -9,13 +16,5 @@ module.exports = function ($scope, campaign, screenfull, projectorConfig, templa
       $scope.$digest();
     });
   }
-  this.templates = templates;
-};
-module.exports.$inject = [
-  '$scope',
-  'campaign',
-  'screenfull',
-  'projectorConfig',
-  'templates',
-  '$document'
-];
+}
+export default ProjectorController;

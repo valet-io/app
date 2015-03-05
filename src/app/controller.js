@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = function (syncLoaded) {
+AppController.$inject = ['syncLoaded'];
+function AppController (syncLoaded) {
   syncLoaded(this);
-};
-module.exports.$inject = ['syncLoaded'];
+}
+
+export default AppController;

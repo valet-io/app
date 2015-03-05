@@ -15,25 +15,13 @@ tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
 tasks.use('clean', 'build');
 tasks.use('templates', './src/**/views/*.html', 'build/views');
 tasks.use('styles', './styles/main.scss', './build/styles');
-tasks.use('vendor', [
-  './node_modules/angular/angular.js',
-  './node_modules/angular-animate/angular-animate.js',
-  './node_modules/angular-ui-router/release/angular-ui-router.js',
-  './components/firebase/firebase.js',
-  './components/angularfire/angularfire.js',
-  './components/ngFitText/src/ng-FitText.js',
-  './components/raven-js/dist/raven.js',
-  './components/raven-js/plugins/angular.js'
-], './build/scripts');
-tasks.use('bundle', './src/index.js', './build/scripts', {
-  templates: './src/**/views/*.html',
-  module: 'ValetApp'
-});
+tasks.use('bundle', './src/index.js', './build/scripts', {});
 tasks.use('index', './src/index.html', './build');
 tasks.use('server', void 0, void 0, {
   localEnv: {
     'firebase__endpoint': 'https://valet-io-events-dev.firebaseio.com',
-    'valet__api': 'http://valet-io-pledge-dev.herokuapp.com'
+    'valet__api': 'http://valet-io-pledge-dev.herokuapp.com',
+    'sentry__dsn': 'https://0759fbf95a4d40019f9451e963351d18@app.getsentry.com/38955'
   }
 });
 tasks.use('watch', {
@@ -45,7 +33,7 @@ tasks.use('watch', {
 }, void 0,
 {
   build: './build',
-  prerequisites: ['templates', 'styles', 'vendor', 'index', 'images']
+  prerequisites: ['templates', 'styles', 'index', 'images']
 });
 
 gulp.task('unit', function () {
@@ -65,7 +53,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('build', ['clean'], function (done) {
-  sequence(['bundle', 'vendor', 'templates', 'styles', 'images'], 'index', done);
+  sequence(['bundle', 'templates', 'styles', 'images'], 'index', done);
 });
 
 gulp.task('serve', ['watch', 'server']);

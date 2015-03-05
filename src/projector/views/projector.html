@@ -1,0 +1,14 @@
+<div class="projector">
+  <header class="projector-header">
+    <a class="projector-go-fullscreen" ng-show="fullscreen && !fullscreen.isFullscreen" ng-click="fullscreen.request()">
+      Go Full Screen
+    </a>
+    <test-badge>
+      <h2>Test</h2>
+    </test-badge>
+  </header>
+  <section class="projector-content">
+    <div class="projector-main" ui-view="main"></div>
+    <div class="projector-sidebar" ui-view="sidebar"></div>
+  </section>
+</div>

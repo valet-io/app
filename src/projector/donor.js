@@ -1,10 +1,12 @@
 'use strict';
 
-module.exports = function () {
+import template from './views/donor.html';
+
+export default function () {
   return {
     scope: {
       pledge: '='
     },
-    templateUrl: '/views/projector/donor.html'
+    template
   };
-};
+}

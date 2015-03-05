@@ -1,31 +1,32 @@
 <header class="topbar">
   <img class="logo" src="/images/valet-io-logo.svg" alt="Valet.io Logo" />
 </header>
-<div class="pledges-dashboard">
-  <table class="summary-statistics">
-    <tr>
-      <th>Total</th>
-      <th>Count</th>
-    </tr>
-    <tr>
-      <td>{{campaign.$$aggregates.total | currency:'$':0}}</td>
-      <td>{{campaign.count | number}}</td>
-    </tr>
-  </table>
-  <input type="text" ng-model="query.donor.name" placeholder="Search by name" />
-  <table class="pledges">
-    <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Anonymous</th>
-      <th>Timestamp</th>
-    </tr>
-    <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
-      <td>{{pledge.donor.name}}</td>
-      <td>{{pledge.amount | currency:'$':0}}</td>
-      <td>{{pledge.anonymous}}</td>
-      <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
-    </tr>
-  </table>
+<div class="content">
+  <div class="pledges-dashboard">
+    <table class="summary-statistics">
+      <tr>
+        <th>Total</th>
+        <th>Count</th>
+      </tr>
+      <tr>
+        <td>{{campaign.$$aggregates.total | currency:'$':0}}</td>
+        <td>{{campaign.count | number}}</td>
+      </tr>
+    </table>
+    <input type="text" ng-model="query.donor.name" placeholder="Search by name" />
+    <table class="pledges">
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Anonymous</th>
+        <th>Timestamp</th>
+      </tr>
+      <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
+        <td>{{pledge.donor.name}}</td>
+        <td>{{pledge.amount | currency:'$':0}}</td>
+        <td>{{pledge.anonymous}}</td>
+        <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
-
