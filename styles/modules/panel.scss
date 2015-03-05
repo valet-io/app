@@ -1,6 +1,7 @@
 .panel {
 
-  margin: .5em 0;  
+  margin: 1em 0;
+  overflow: hidden;
   background: white;
   border-radius: 3px;
   box-shadow: 0 1px 2px #ddd;
@@ -13,6 +14,21 @@
       &:not(:last-child) {
         border-right: #F0F0F0 .1em solid;
       }
+    }
+  }
+
+  &-header {
+    @include container;
+    background: #F8F8F8;
+    box-shadow: 0px 1px 2px #eee;
+
+    h3 {
+      font: {
+        size: 1.5em;
+        weight: 700;
+      }
+      color: #323A45;
+      text-shadow: 0 1px 1px white;
     }
   }
 
@@ -36,7 +52,7 @@
     font: {
       size: .8em;
     }
-    color: #ADADAD;
     text-transform: uppercase;
+    color: #ADADAD;
   }
 }
