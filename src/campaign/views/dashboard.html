@@ -30,7 +30,7 @@
             <th>Anonymous</th>
             <th>Timestamp</th>
           </tr>
-          <tr ng-repeat="pledge in campaign.pledges | filter:query | reverse">
+          <tr ng-repeat="pledge in campaign.pledges">
             <td>{{pledge.donor.name}}</td>
             <td>{{pledge.amount | currency:'$':0}}</td>
             <td>{{pledge.anonymous}}</td>
