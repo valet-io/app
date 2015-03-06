@@ -20,15 +20,16 @@
 
   &-header {
     @include container;
-    background: #323A45;
+    background: #eee;
+    box-shadow: 0 1px 1px #ddd;
 
     h3 {
       font: {
         size: 1.5em;
         weight: 700;
       }
-      color: white;
-      text-shadow: 0 1px 1px rgba(black, .1);
+      color: #323A45;
+      text-shadow: 0 1px 1px rgba(white, .1);
     }
   }
 
