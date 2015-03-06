@@ -1,0 +1,9 @@
+.table-pledges {
+  width: 100%;
+  table-layout: fixed;
+
+  &-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
