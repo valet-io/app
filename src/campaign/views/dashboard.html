@@ -24,18 +24,22 @@
       </header>
       <div class="panel-content">
         <table class="pledges">
-          <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Anonymous</th>
-            <th>Timestamp</th>
-          </tr>
-          <tr ng-repeat="pledge in campaign.pledges">
-            <td>{{pledge.donor.name}}</td>
-            <td>{{pledge.amount | currency:'$':0}}</td>
-            <td>{{pledge.anonymous}}</td>
-            <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Time</th>
+              <th>Anonymous</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="pledge in campaign.pledges">
+              <td>{{pledge.donor.name}}</td>
+              <td>{{pledge.amount | currency:'$':0}}</td>
+              <td>{{pledge.created_at | date:'h:mm:ss'}}</td>
+              <td>{{pledge.anonymous}}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </section>

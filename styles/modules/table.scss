@@ -1,0 +1,24 @@
+table {
+  thead {
+    color: #323A45;
+    font: {
+      weight: 600;
+    }
+    tr {
+      border: {
+        bottom: 3px solid #D7D7D7;
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background: #F0F0F0;
+      }
+    }
+  }
+}
+
+td, th {
+  padding: .75em;
+}
