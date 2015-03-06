@@ -35,6 +35,8 @@
 
   &-content {
     @include container;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   &-summary {

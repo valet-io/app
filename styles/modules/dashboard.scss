@@ -1,8 +1,10 @@
 .table-pledges {
-  width: 100%;
+  min-width: 100%;
+  // width: 100%;
   table-layout: fixed;
 
   &-name {
+    max-width: 8em;
     overflow: hidden;
     text-overflow: ellipsis;
   }
