@@ -22,31 +22,29 @@
       <header class="panel-header">
         <h3>Pledges</h3>
       </header>
-      <div class="panel-content">
-        <table class="table-pledges">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Time</th>
-              <th>Anonymous</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="pledge in campaign.pledges">
-              <td class="table-pledges-name">{{pledge.donor.name}}</td>
-              <td>{{pledge.amount | currency:'$':0}}</td>
-              <td>{{pledge.created_at | date:'h:mm'}}</td>
-              <td class="table-pledges-anonymous">
-                <span ng-switch="pledge.anonymous">
-                  <span ng-switch-when="true">✔︎</span>
-                  <span ng-switch-when="false">—</span>
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table-pledges">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Time</th>
+            <th>Anonymous</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="pledge in campaign.pledges">
+            <td class="table-pledges-name">{{pledge.donor.name}}</td>
+            <td>{{pledge.amount | currency:'$':0}}</td>
+            <td>{{pledge.created_at | date:'h:mm'}}</td>
+            <td class="table-pledges-anonymous">
+              <span ng-switch="pledge.anonymous">
+                <span ng-switch-when="true">✔︎</span>
+                <span ng-switch-when="false">—</span>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
 </main>

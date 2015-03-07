@@ -1,30 +1,40 @@
-table {
-  thead {
-    color: #323A45;
-    font: {
-      weight: 600;
-    }
-    tr {
-      border: {
-        bottom: 3px solid #D7D7D7;
-      }
-    }
-  }
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background: #F0F0F0;
-      }
-    }
+$cell-background: #323A45;
+$cell-border: 1px solid #eee;
+
+thead {
+  @include linear-gradient(
+    lighten($cell-background, 10%),
+    $cell-background 20%,
+    darken($cell-background, 5%), 
+    darken($cell-background, 10%) 95% 
+  );
+  color: #f8f8f8;
+  text-transform: uppercase;
+}
+
+tbody {
+  tr {
+    border-bottom: $cell-border;
   }
 }
 
 td, th {
-  text-align: left;
-  vertical-align: middle;
-  padding: .25em;
+  text-align: center;
+  vertical-align: middle;  
+}
 
-  @media #{$medium} {
-    padding: .5em;
+td {
+  padding: .5em;
+  color: #333;
+  &:not(:last-child) {
+    border-right: $cell-border;
+  }
+}
+
+th {
+  font-size: .8em;
+  padding: 1em .5em;
+  &:not(:last-child) {
+    border-right: 1px solid lighten($cell-background, 5%);
   }
 }

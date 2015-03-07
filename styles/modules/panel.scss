@@ -3,7 +3,7 @@
   margin: 1em 0;
   overflow: hidden;
   background: white;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-radius: 3px;
   box-shadow: 0 1px 2px #ddd;
 
@@ -20,8 +20,14 @@
 
   &-header {
     @include container;
-    background: #eee;
-    box-shadow: 0 1px 1px #ddd;
+    @include linear-gradient(
+      to bottom,
+      white,
+      #f8f8f8 20%,
+      #f4f4f4 90%,
+      #f2f2f2
+    );
+    box-shadow: 0 1px 1px #222;
 
     h3 {
       font: {
@@ -29,7 +35,7 @@
         weight: 700;
       }
       color: #323A45;
-      text-shadow: 0 1px 1px rgba(white, .1);
+      text-shadow: 0 1px 1px white;
     }
   }
 
