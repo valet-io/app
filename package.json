@@ -26,6 +26,7 @@
     "angular-round": "~1.0.0",
     "angular-router-exception-handler": "~1.0.0",
     "angular-ui-router": "bendrucker/ui-router#3d156d6ae898367ae7625780fbc2d48dbe6989e9",
+    "angular-valet-logo": "git://github.com/valet-io/angular-valet-logo",
     "babelify": "~5.0.3",
     "confidential-divshot": "~0.1.0",
     "convex": "~3.3.1",

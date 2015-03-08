@@ -8,6 +8,7 @@ import convex from 'convex';
 import convexFirebase from 'convex-firebase';
 import models from 'valet-io-pledge-models';
 import directives from 'valet-io-directives';
+import logo from 'angular-valet-logo'; 
 import app from './app';
 import campaign from './campaign';
 import projector from './projector';
@@ -21,6 +22,7 @@ export default angular.module('valetApp', [
   convexFirebase,
   models,
   directives,
+  logo,
   app,
   campaign,
   projector
