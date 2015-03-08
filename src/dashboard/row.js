@@ -18,12 +18,12 @@ Row.$inject = ['$element', '$animate'];
 function Row ($element, $animate) {
   let content;
   this.setContent = function (element) {
-    content = element
-      .wrap('<div class="row-extra-content"></div>')
+    const wrapper = angular.element('<div class="row-extra-content"></div>');
+    content = wrapper
+      .append(element)
+      .wrap(`<td colspan="${$element.children().length - 1}"></td>`)
       .parent()
-      .wrap(`<td class="row-extra" colspan="${$element.children().length - 1}"></td>`)
-      .parent()
-      .wrap('<tr></tr>')
+      .wrap('<tr class="row-extra"></tr>')
       .parent();
   };
   this.active = false;
