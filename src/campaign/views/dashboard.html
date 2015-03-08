@@ -8,15 +8,9 @@
     </div>
   </header>
   <div class="content">
-    <section class="panel panel-split panel-summary">
-      <div class="panel-content">
-        <h2>{{campaign.total | currency:'$':0}}</h2>
-        <h4>Pledged</h4>
-      </div>
-      <div class="panel-content">
-        <h2>{{campaign.count | number}}</h2>
-        <h4>Pledges</h4>
-      </div>
+    <section class="panel panel-split panel-statistics">
+      <statistic title="Pledged">{{campaign.total | currency:'$':0}}</statistic>
+      <statistic title="Pledges">{{campaign.count | number}}</statistic>
     </section>
     <section class="panel">
       <header class="panel-header">
