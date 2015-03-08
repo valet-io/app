@@ -2,6 +2,7 @@ $cell-background: #323A45;
 $cell-border: 1px solid #eee;
 
 thead {
+  font-weight: 600;
   @include linear-gradient(
     lighten($cell-background, 10%),
     $cell-background 20%,
