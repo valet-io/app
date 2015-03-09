@@ -41,10 +41,44 @@ th {
 }
 
 .row-extra {
-  padding: 1em .5em;
   background: $cell-background;
-  box-shadow: inset 0 2px 1px #222, inset 0 -1px 1px #222;
-  &-content {
-    color: white;
+  td {
+    padding: 0;
   }
+  &-content {
+    padding: 1em .5em;
+    color: white;
+    box-shadow: inset 0 2px 1px #222, inset 0 -1px 1px #222;
+  }
+  &.ng-enter {
+    transition: line-height .1s ease-out, opacity .2s ease-out .15s;
+    line-height: 0;
+    .row-extra-content {
+      transition: padding .1s ease-out, opacity .2s ease-out .15s;
+      padding: 0;
+      opacity: 0;
+    }
+  }
+  &.ng-enter.ng-enter-active {
+    line-height: inherit;
+    .row-extra-content {
+      padding: 1em;
+      opacity: 1;
+    }
+  }
+  &.ng-leave {
+    transition: opacity .1s ease-out, line-height .1s ease-out .15s;
+    line-height: inherit;
+    .row-extra-content {
+      transition: opacity .1s ease-out, padding .1s ease-out .15s;
+      opacity: 1;
+    }
+  }
+  &.ng-leave.ng-leave-active {
+    line-height: 0;
+    .row-extra-content {
+      padding: 0;
+      opacity: 0;
+    }
+  }  
 }
