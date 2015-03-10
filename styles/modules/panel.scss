@@ -59,7 +59,13 @@
           top: 0;
           bottom: 0;
         }
+        &:last-child {
+          margin-right: 0;
+        }
       }
+    }
+    input {
+      width: 100%;
     }
   }
 
