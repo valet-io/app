@@ -1,5 +1,9 @@
 .projector {
 
+  font: {
+    family: 'tablet-gothic', sans-serif;
+  }
+
   font-size: 16px;
   @media #{$medium} {
     font-size: 20px;

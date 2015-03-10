@@ -8,6 +8,8 @@ import convex from 'convex';
 import convexFirebase from 'convex-firebase';
 import models from 'valet-io-pledge-models';
 import directives from 'valet-io-directives';
+import logo from 'angular-valet-logo'; 
+import attachFastClick from 'fastclick';
 import app from './app';
 import campaign from './campaign';
 import projector from './projector';
@@ -21,6 +23,7 @@ export default angular.module('valetApp', [
   convexFirebase,
   models,
   directives,
+  logo,
   app,
   campaign,
   projector
@@ -29,6 +32,7 @@ export default angular.module('valetApp', [
 .config(html5Mode)
 .config(configureConvex)
 .config(stripe)
+.run(fastClick)
 .name;
 
 html5Mode.$inject = ['$locationProvider'];
@@ -45,4 +49,9 @@ function configureConvex (convexConfig, config) {
 stripe.$inject = ['$provide'];
 function stripe ($provide) {
   $provide.value('stripe', {});
+}
+
+fastClick.$inject = ['$document'];
+function fastClick ($document) {
+  attachFastClick($document[0].body);
 }

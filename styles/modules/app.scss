@@ -1,0 +1,11 @@
+.app {
+  &-header {
+    font-size: .5em;
+    padding: 1em;
+    background: $valet-color;
+
+    valet-io-logo {
+      max-height: 2em;
+    }
+  }
+}

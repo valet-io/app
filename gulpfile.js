@@ -14,7 +14,7 @@ gutil.log('Environment:', gutil.colors.cyan(tasks.env.env));
 tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
 tasks.use('clean', 'build');
 tasks.use('templates', './src/**/views/*.html', 'build/views');
-tasks.use('styles', './styles/main.scss', './build/styles');
+tasks.use('styles', './styles/index.scss', './build/styles');
 tasks.use('bundle', './src/index.js', './build/scripts', {});
 tasks.use('index', './src/index.html', './build');
 tasks.use('server', void 0, void 0, {
