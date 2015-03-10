@@ -15,13 +15,14 @@ function states ($stateProvider) {
       abstract: true,
       template: '<div ui-view></div>',
       url: '/:id?{test:bool}',
-      controller: 'CampaignController',
       resolve: {
         campaign: campaign
       }
     })
     .state('campaign.dashboard', {
       template: dashboard,
+      controller: 'CampaignDashboardController',
+      controllerAs: 'dashboard',
       url: '',
       resolve: {
         campaign: subscribe

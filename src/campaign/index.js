@@ -9,7 +9,7 @@ import live from 'angular-live-or-test';
 import dashboard from '../dashboard';
 import autofocus from './autofocus';
 import states from './states';
-import CampaignController from './controller';
+import CampaignDashboardController from './controller';
 
 export default angular.module('valetApp.campaign', [
   router,
@@ -19,7 +19,7 @@ export default angular.module('valetApp.campaign', [
   live,
   dashboard
 ])
-.controller('CampaignController', CampaignController)
+.controller('CampaignDashboardController', CampaignDashboardController)
 .directive('autofocus', autofocus)
 .config(states)
 .name;
