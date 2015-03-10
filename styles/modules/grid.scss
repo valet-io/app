@@ -27,3 +27,7 @@ body {
 .full-height {
   min-height: 100%;
 }
+
+main {
+  @extend .full-height;
+}
