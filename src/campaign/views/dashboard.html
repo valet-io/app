@@ -30,12 +30,12 @@
             <td class="table-pledges-name">{{pledge.donor.name}}</td>
             <td>{{pledge.amount | currency:'$':0}}</td>
             <td pledge-row-extra>
-              <p>Submitted at {{pledge.created_at | date:'h:mm a'}}</p>
+              <p>{{pledge.created_at | date:"M/d 'at' h:mm a"}}</p>
               <p>Anonymous:
-                <span ng-switch="pledge.anonymous">
+                <em ng-switch="pledge.anonymous">
                   <span ng-switch-when="true">Yes</span>
                   <span ng-switch-when="false">Yes</span>
-                </span>
+                </em>
               </p>
             </td>
           </tr>
