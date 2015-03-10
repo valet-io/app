@@ -10,7 +10,7 @@ function factory ($timeout) {
     restrict: 'A',
     link: function (scope, $element) {
       const element = $element[0];
-      $timeout(angular.bind(element, element.focus), 10);
+      $timeout(angular.bind(element, element.focus));
     }
   };
 }
