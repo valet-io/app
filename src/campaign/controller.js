@@ -5,7 +5,7 @@ function CampaignController ($scope, campaign) {
   $scope.campaign = campaign;
   $scope.search = {};
   $scope.filterPledges = function (pledge) {
-    return !$scope.search.name || (pledge.donor.name.indexOf($scope.search.name) !== -1);
+    return !$scope.search.name || (pledge.donor.name.toLowerCase().indexOf($scope.search.name.toLowerCase()) !== -1);
   };
 }
 
