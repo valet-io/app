@@ -21,4 +21,8 @@ input {
     outline: none;
     box-shadow: inset 1px 1px 1px #eee, 0 0 1px 2px rgba(#51A8E6, .5);
   }
+
+  &[type="text"] {
+    font-size: 16px;
+  }
 }
