@@ -17,7 +17,7 @@
         <div class="panel-header-main">
           <h3>Pledges</h3>
           <div class="panel-controls">
-            <button class="button-text" ng-click="showSearch = !showSearch">Search</button>
+            <button class="button-text" ng-click="showSearch = !showSearch">{{!showSearch ? 'Search' : 'Close'}}</button>
           </div>
         </div>
         <input type="text" placeholder="Search by name" ng-if="showSearch" ng-model="search.name" ng-model-options="{debounce: 100}" autofocus />
