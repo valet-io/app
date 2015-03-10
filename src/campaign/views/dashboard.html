@@ -12,9 +12,15 @@
       <statistic title="Pledged">{{campaign.total | currency:'$':0}}</statistic>
       <statistic title="Pledges">{{campaign.count | number}}</statistic>
     </section>
-    <section class="panel">
+    <section class="panel panel-pledges">
       <header class="panel-header">
-        <h3>Pledges</h3>
+        <div class="panel-header-main">
+          <h3>Pledges</h3>
+          <div class="panel-controls">
+            <button class="button-text" ng-click="showSearch = !showSearch">Search</button>
+          </div>
+        </div>
+        <input type="text" placeholder="Search by name" ng-if="showSearch" ng-model="search" />
       </header>
       <table class="table-pledges">
         <thead>

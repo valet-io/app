@@ -47,6 +47,22 @@
     text-align: center;
   }
 
+  &-pledges {
+    .panel-header-main {
+      @include display(flex);
+      @include justify-content(space-between);
+      @include align-items(center);
+    }
+    .panel-controls {
+      button {
+        margin: {
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+
   h2 {
     font: {
       size: 2em;

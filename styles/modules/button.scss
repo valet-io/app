@@ -1,0 +1,20 @@
+button {
+  font: {
+    size: 1em;
+    family: inherit;
+  }
+  padding: .5em;
+  margin: .5em;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.button {
+  &-text {
+    padding: 0;
+    color: #323A45;
+    text-transform: uppercase;
+  }
+}
