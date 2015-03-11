@@ -4,16 +4,15 @@ var angular = require('angular');
 
 module.exports = function () {
 
-  describe('Campaign', function () {
+  describe('Dashboard', function () {
 
-    it('publishes the campaign on the scope', angular.mock.inject(function ($injector) {
-      var scope = $injector.get('$rootScope').$new();
+    it('publishes the campaign on the controller', angular.mock.inject(function ($injector) {
       var campaign = {};
-      $injector.get('$controller')('CampaignController', {
-         $scope: scope,
+      var controller = $injector.get('$controller')('CampaignDashboardController', {
+         $scope: $injector.get('$rootScope').$new(),
          campaign: campaign
        });
-      expect(scope.campaign).to.equal(campaign);
+      expect(controller.campaign).to.equal(campaign);
     }));
 
   });
