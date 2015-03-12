@@ -10,6 +10,19 @@ function states ($stateProvider) {
     .state('pledge', {
       parent: 'pledges',
       url: '/:id',
-      template: template
+      template: template,
+      resolve: {
+        pledge: getPledge
+      }
     });
+}
+
+getPledge.$inject = ['Pledge', '$stateParams'];
+function getPledge (Pledge, $stateParams) {
+  return new Pledge({
+    id: $stateParams.id
+  })
+  .$fetch({
+    expand: ['campaign']
+  });
 }
