@@ -13,6 +13,7 @@ import attachFastClick from 'fastclick';
 import app from './app';
 import campaign from './campaign';
 import projector from './projector';
+import pledge from './pledge';
 import config from './config';
 
 export default angular.module('valetApp', [
@@ -26,7 +27,8 @@ export default angular.module('valetApp', [
   logo,
   app,
   campaign,
-  projector
+  projector,
+  pledge
 ])
 .constant('config', config)
 .config(html5Mode)
