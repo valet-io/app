@@ -6,26 +6,39 @@ states.$inject = ['$stateProvider'];
 function states ($stateProvider) {
   $stateProvider
     .state('campaigns', {
+      parent: 'admin',
       abstract: true,
-      template: '<div ui-view></div>',
-      url: '/campaigns'
+      url: '/campaigns',
+      views: {
+        content: {
+          template: '<div ui-view="content" name="campaigns"></div>'
+        }
+      }
     })
     .state('campaign', {
       parent: 'campaigns',
       abstract: true,
-      template: '<div ui-view></div>',
       url: '/:id?{test:bool}',
       resolve: {
         campaign: campaign
+      },
+      views: {
+        content: {
+          template: '<div ui-view="content" name="campaign"></div>'
+        }
       }
     })
     .state('campaign.dashboard', {
-      template: dashboard,
-      controller: 'CampaignDashboardController',
-      controllerAs: 'dashboard',
       url: '',
       resolve: {
         campaign: subscribe
+      },
+      views: {
+        content: {
+          controller: 'CampaignDashboardController',
+          controllerAs: 'dashboard',
+          template: dashboard
+        }
       }
     });
 }

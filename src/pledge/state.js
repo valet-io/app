@@ -6,8 +6,13 @@ state.$inject = ['$stateProvider'];
 function state ($stateProvider) {
   $stateProvider
     .state('pledges', {
+      parent: 'admin',
       url: '/pledges',
       abstract: true,
-      template: '<div ui-view></div>'
+      views: {
+        content: {
+          template: '<div ui-view="content" name="pledges"></div>'
+        }
+      }
     });
 }

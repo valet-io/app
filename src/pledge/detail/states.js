@@ -10,9 +10,13 @@ function states ($stateProvider) {
     .state('pledge', {
       parent: 'pledges',
       url: '/:id',
-      template: template,
       resolve: {
         pledge: getPledge
+      },
+      views: {
+        content: {
+          template
+        }
       }
     });
 }

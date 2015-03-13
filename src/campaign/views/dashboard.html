@@ -1,57 +1,52 @@
-<header class="app-header">
-  <valet-io-logo></valet-io-logo>
-</header>
-<main>
-  <header class="main-header">
-    <div class="content">
-      <h1>{{dashboard.campaign.name}}</h1>
-    </div>
-  </header>
+<header class="main-header">
   <div class="content">
-    <section class="panel panel-split panel-statistics">
-      <statistic title="Pledged">{{dashboard.campaign.total | currency:'$':0}}</statistic>
-      <statistic title="Pledges">{{dashboard.campaign.count | number}}</statistic>
-    </section>
-    <section class="panel panel-pledges">
-      <header class="panel-header">
-        <div class="panel-header-main">
-          <h3>Pledges</h3>
-          <div class="panel-controls">
-            <button class="button-text" ng-click="dashboard.search.toggle()">
-              <ng-switch on="dashboard.search.open">
-                <span ng-switch-default>Search</span>
-                <span ng-switch-when="true">Close</span>
-              </ng-switch>
-            </button>
-          </div>
-        </div>
-        <input type="text" placeholder="Search by name" ng-if="dashboard.search.open" ng-model="dashboard.search.query" ng-model-options="dashboard.search.options" autofocus />
-      </header>
-      <table class="table-pledges">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <!-- <th>Time</th> -->
-            <!-- <th>Anonymous</th> -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="pledge in dashboard.campaign.pledges | filter:dashboard.search.predicate" pledge-row>
-            <td class="table-pledges-name">{{pledge.donor.name}}</td>
-            <td>{{pledge.amount | currency:'$':0}}</td>
-            <td pledge-row-extra>
-              <p>{{pledge.created_at | date:"M/d 'at' h:mm a"}}</p>
-              <p>Anonymous:
-                <em ng-switch="pledge.anonymous">
-                  <span ng-switch-when="true">Yes</span>
-                  <span ng-switch-when="false">No</span>
-                </em>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <h1>{{dashboard.campaign.name}}</h1>
   </div>
-</main>
+</header>
+<div class="content">
+  <section class="panel panel-split panel-statistics">
+    <statistic title="Pledged">{{dashboard.campaign.total | currency:'$':0}}</statistic>
+    <statistic title="Pledges">{{dashboard.campaign.count | number}}</statistic>
+  </section>
+  <section class="panel panel-pledges">
+    <header class="panel-header">
+      <div class="panel-header-main">
+        <h3>Pledges</h3>
+        <div class="panel-controls">
+          <button class="button-text" ng-click="dashboard.search.toggle()">
+            <ng-switch on="dashboard.search.open">
+              <span ng-switch-default>Search</span>
+              <span ng-switch-when="true">Close</span>
+            </ng-switch>
+          </button>
+        </div>
+      </div>
+      <input type="text" placeholder="Search by name" ng-if="dashboard.search.open" ng-model="dashboard.search.query" ng-model-options="dashboard.search.options" autofocus />
+    </header>
+    <table class="table-pledges">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <!-- <th>Time</th> -->
+          <!-- <th>Anonymous</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="pledge in dashboard.campaign.pledges | filter:dashboard.search.predicate" pledge-row>
+          <td class="table-pledges-name">{{pledge.donor.name}}</td>
+          <td>{{pledge.amount | currency:'$':0}}</td>
+          <td pledge-row-extra>
+            <p>{{pledge.created_at | date:"M/d 'at' h:mm a"}}</p>
+            <p>Anonymous:
+              <em ng-switch="pledge.anonymous">
+                <span ng-switch-when="true">Yes</span>
+                <span ng-switch-when="false">No</span>
+              </em>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

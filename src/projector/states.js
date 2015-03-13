@@ -24,6 +24,12 @@ function states ($stateProvider) {
           controller: 'ProjectorController',
           controllerAs: 'projector'
         },
+        'header@': {
+          template: ''
+        },
+        'footer@': {
+          template: ''
+        },
         'main@projector': {
           template: main
         },
