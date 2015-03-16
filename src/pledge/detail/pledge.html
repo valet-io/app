@@ -3,3 +3,61 @@
     <h1>Pledge Details - {{pledge.campaign.name}}</h1>
   </div>
 </header>
+<div class="content">
+  <section class="panel">
+    <header class="panel-header">
+      <div class="panel-header-main">
+        <h3>Pledge</h3>
+      </div>
+    </header>
+    <table>
+      <tbody>
+        <tr>
+          <td>Amount</td>
+          <td>{{pledge.amount | currency:'$':0}}</td>
+        </tr>
+        <tr>
+          <td>Time</td>
+          <td>{{pledge.created_at | date:"M/d/yy - h:mm:ss a"}}</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td ng-switch="pledge.cancelled">
+            <span ng-switch-when="false">Active</span>
+            <span ng-switch-when="true">Cancelled</span>
+          </td>
+        </tr>
+        <tr ng-if="pledge.cancelled">
+          <td>Reason</td>
+          <td>{{pledge.cancelled_reason}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="panel">
+    <header class="panel-header">
+      <div class="panel-header-main">
+        <h3>Donor</h3>
+      </div>
+    </header>
+    <table>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{pledge.donor.name}}</td>
+        </tr>
+        <tr>
+          <td>Phone Number</td>
+          <td>{{pledge.donor.phone}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td ng-switch="!!pledge.donor.email">
+            <span ng-switch-when="true">{{pledge.donor.email}}</span>
+            <em ng-switch-default>Not Provided</em>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

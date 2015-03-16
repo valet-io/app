@@ -28,6 +28,6 @@ function getPledge (Pledge, $stateParams) {
     id: $stateParams.id
   })
   .$fetch({
-    expand: ['campaign']
+    expand: ['campaign', 'donor']
   });
 }

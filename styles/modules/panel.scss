@@ -70,6 +70,10 @@
     }
   }
 
+  table, tbody, tr {
+    min-width: 100%;
+  }
+
   h2 {
     font: {
       size: 2em;
