@@ -15,6 +15,7 @@ function states ($stateProvider) {
       },
       views: {
         content: {
+          controller: 'PledgeDetailController',
           template
         }
       }
