@@ -38,8 +38,8 @@ export default angular.module('valetApp', [
 .name;
 
 html5Mode.$inject = ['$locationProvider'];
-function html5Mode ($locationProvider) {
-  $locationProvider.html5Mode(true);
+function html5Mode ({html5Mode}) {
+  html5Mode(true);
 }
 
 configureConvex.$inject = ['convexConfig', 'config'];

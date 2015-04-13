@@ -2,8 +2,8 @@
 
 import Raven from 'raven-js';
 import ngRaven from 'angular-raven';
-import config from './config';
+import {sentry} from './config';
 
-Raven.config(config.sentry.dsn).install();
+Raven.config(sentry.dsn).install();
 
 export default ngRaven;

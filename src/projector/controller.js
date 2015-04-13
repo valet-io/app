@@ -12,7 +12,7 @@ function ProjectorController ($scope, campaign, screenfull, projectorConfig, $do
   this.config = projectorConfig;
   $scope.fullscreen = screenfull;
   if (screenfull) {
-    $document.on(screenfull.raw.fullscreenchange, function () {
+    $document.on(screenfull.raw.fullscreenchange, () => {
       $scope.$digest();
     });
   }
