@@ -1,4 +1,9 @@
-module.exports = {
+var CI = !!process.env.CI;
+var COVER = !!process.env.COVER;
+
+var pkg = require('./package.json');
+
+var config = module.exports = {
   frameworks: ['browserify', 'mocha', 'chai-sinon', 'env'],
   files: [
     './node_modules/angular/angular.js',
@@ -8,7 +13,7 @@ module.exports = {
   preprocessors: {
     'test/unit/**/*.js': ['browserify']
   },
-  reporters: ['progress', 'coverage'],
+  reporters: ['progress'],
   browserify: {
     debug: true
   },
@@ -24,6 +29,16 @@ module.exports = {
       valet__api: 'http://valet-io-pledge-dev.herokuapp.com'
     }
   },
-  browsers: process.env.CI ? ['Firefox'] : ['PhantomJS'],
-  singleRun: !!process.env.CI
+  browsers: CI ? ['Firefox'] : ['PhantomJS'],
+  singleRun: CI
 };
+
+if (COVER) {
+  config.reporters.push('coverage');
+  config.browserify.transform = [
+    ['browserify-istanbul', {
+      ignore: ['test/**/*.js', '**/*.html'],
+      instrumenter: require('isparta')
+    }]
+  ];
+}
