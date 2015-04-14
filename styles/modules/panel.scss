@@ -43,6 +43,12 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  &-placeholder {
+    margin: 1em;
+    text-align: center;
+    color: #888;
+  }
+
   &-statistics {
     text-align: center;
   }

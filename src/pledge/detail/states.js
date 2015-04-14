@@ -25,6 +25,6 @@ getPledge.$inject = ['Pledge', '$stateParams'];
 function getPledge (Pledge, {id}) {
   return new Pledge({id})
     .$fetch({
-      expand: ['campaign', 'donor']
+      expand: ['campaign', 'donor', 'payments']
     });
 }
