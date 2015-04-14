@@ -1,8 +1,17 @@
 'use strict';
 
-export default PledgeDetailController;
+import {annotate} from 'angular-annotation-decorator';
 
-PledgeDetailController.$inject = ['$scope', 'pledge'];
-function PledgeDetailController ($scope, pledge) {
-  $scope.pledge = pledge;
+@annotate('$scope', 'pledge')
+export default class PledgeDetailController {
+  constructor ($scope, pledge) {
+    this.pledge = $scope.pledge = pledge;
+  }
+  get paid () {
+    return !!this.pledge.payments.length;
+  }
+  get payment () {
+    const payments = this.pledge.payments;
+    return payments[payments.length - 1];
+  }
 }

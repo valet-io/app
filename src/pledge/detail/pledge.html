@@ -66,22 +66,40 @@
         <h3>Payment</h3>
       </div>
     </header>
-    <div ng-switch="!!pledge.payments.length">
+    <div ng-switch="detail.paid">
       <table ng-switch-when="true">
         <tbody>
           <tr>
-            <td>Name</td>
-            <td>{{pledge.donor.name}}</td>
+            <td>Method</td>
+            <td>{{detail.payment.provider_name === 'stripe' ? 'Credit Card' : 'Manual'}}</td>
           </tr>
           <tr>
-            <td>Phone Number</td>
-            <td>{{pledge.donor.phone}}</td>
+            <td>Time</td>
+            <td>{{detail.payment.created_at | date:"M/d/yy - h:mm:ss a"}}</td>
           </tr>
           <tr>
-            <td>Email</td>
-            <td ng-switch="!!pledge.donor.email">
-              <span ng-switch-when="true">{{pledge.donor.email}}</span>
-              <em ng-switch-default>Not Yet Available</em>
+            <td>Address</td>
+            <td>
+              <p>{{detail.payment.address.street1}}<p>
+              <p>{{detail.payment.address.street2}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>
+              {{detail.payment.address.city}}
+            </td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td>
+              {{detail.payment.address.state}}
+            </td>
+          </tr>
+          <tr>
+            <td>ZIP</td>
+            <td>
+              {{detail.payment.address.zip}}
             </td>
           </tr>
         </tbody>

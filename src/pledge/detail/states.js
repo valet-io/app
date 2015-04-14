@@ -15,6 +15,7 @@ function states ({state}) {
     views: {
       content: {
         controller: 'PledgeDetailController',
+        controllerAs: 'detail',
         template
       }
     }
