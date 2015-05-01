@@ -30,7 +30,7 @@
     "angular-valet-logo": "git://github.com/valet-io/angular-valet-logo",
     "babelify": "~6.0.2",
     "confidential-divshot": "~0.1.0",
-    "convex": "~3.3.2",
+    "convex": "~3.3.3",
     "convex-firebase": "~1.3.1",
     "fastclick": "~1.0.6",
     "ngFitText": "bendrucker/ng-FitText.js#ab3161eec6b8be796b6191d4a0964aeb8e6589a8",
