@@ -28,23 +28,12 @@
         <tr>
           <th>Name</th>
           <th>Amount</th>
-          <!-- <th>Time</th> -->
-          <!-- <th>Anonymous</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="pledge in dashboard.campaign.pledges | filter:dashboard.search.predicate" pledge-row>
+        <tr ng-repeat="pledge in dashboard.campaign.pledges track by pledge.id | filter:dashboard.search.predicate" ui-sref="pledge({id: pledge.id})">
           <td class="table-pledges-name">{{pledge.donor.name}}</td>
           <td>{{pledge.amount | currency:'$':0}}</td>
-          <td pledge-row-extra>
-            <p>{{pledge.created_at | date:"M/d 'at' h:mm a"}}</p>
-            <p>Anonymous:
-              <em ng-switch="pledge.anonymous">
-                <span ng-switch-when="true">Yes</span>
-                <span ng-switch-when="false">No</span>
-              </em>
-            </p>
-          </td>
         </tr>
       </tbody>
     </table>
